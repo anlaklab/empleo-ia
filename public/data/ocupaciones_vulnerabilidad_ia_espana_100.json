@@ -1,0 +1,502 @@
+[
+  {
+    "cno": "1212",
+    "score": 5.5,
+    "justificacion": "La función combina tareas digitales y relacionales: definir políticas de talento, negociar con managers, gestionar conflictos, evaluar desempeño y asegurar cumplimiento laboral. La IA ya puede redactar políticas, resumir entrevistas, cribar CV, analizar encuestas y detectar patrones de rotación con LLMs, analítica predictiva y software de people analytics. Pero la negociación sensible, la lectura política de la organización y la responsabilidad legal en decisiones de personas siguen dependiendo claramente de criterio humano, más aún en el marco laboral español."
+  },
+  {
+    "cno": "1219",
+    "score": 6.0,
+    "justificacion": "Este puesto dirige planificación, procesos administrativos y coordinación transversal, con un peso alto de información, documentación, reporting y priorización. La IA puede generar cuadros de mando, proponer escenarios, redactar planes, sintetizar normativa y automatizar gran parte del trabajo de análisis mediante LLMs, RPA y analítica avanzada. Aun así, alinear intereses entre áreas, asumir responsabilidad ejecutiva y decidir bajo ambigüedad política o presupuestaria sigue siendo una tarea humana."
+  },
+  {
+    "cno": "1221",
+    "score": 5.5,
+    "justificacion": "La dirección comercial mezcla análisis de pipeline, pricing, previsión y gestión de equipos con negociación externa y construcción de relaciones. La IA ya ayuda a prever demanda, puntuar oportunidades, generar propuestas, optimizar descuentos y preparar argumentarios usando CRM inteligente, modelos predictivos y LLMs. Sin embargo, cerrar cuentas clave, leer señales informales del cliente y movilizar a la red comercial en contextos competitivos reales todavía requiere liderazgo humano."
+  },
+  {
+    "cno": "1312",
+    "score": 3.5,
+    "justificacion": "Dirigir una explotación pesquera o acuícola es un trabajo híbrido con fuerte componente físico, operativo y regulatorio: producción, sanidad, logística, clima, seguridad y costes. La IA puede apoyar con visión artificial para biomasa, sensores IoT, predicción de alimentación, detección de anomalías y planificación operativa. Pero la ejecución en entornos marinos, la gestión de incidencias biológicas y meteorológicas y la coordinación sobre el terreno siguen limitando mucho una sustitución amplia."
+  },
+  {
+    "cno": "1321",
+    "score": 5.5,
+    "justificacion": "El rol coordina arquitectura, proveedores, ciberseguridad, operaciones, presupuesto y prioridades de negocio, por lo que combina tareas digitales con gobierno y negociación. La IA puede acelerar análisis de incidencias, observabilidad, documentación, priorización técnica, capacity planning y revisión contractual mediante copilots, AIOps y LLMs. Lo que no automatiza bien es el arbitraje entre riesgo, coste, política interna y estrategia empresarial, que es precisamente el núcleo del puesto."
+  },
+  {
+    "cno": "1324",
+    "score": 3.0,
+    "justificacion": "La dirección de servicios sociales para mayores combina gestión administrativa con supervisión asistencial, coordinación de equipos y trato con familias, usuarios y administraciones. La IA puede ayudar en planificación de turnos, documentación, seguimiento de indicadores, alertas de riesgo y resumen de expedientes con analítica y LLMs. Pero la calidad del servicio depende de juicio ético, presencia humana y responsabilidad sobre personas vulnerables, además de un marco regulatorio especialmente restrictivo."
+  },
+  {
+    "cno": "1411",
+    "score": 4.5,
+    "justificacion": "Gestionar un hotel exige mezclar operaciones físicas, experiencia del cliente, revenue management, personal, incidencias y reputación online. La IA ya cubre bastante bien previsión de ocupación, pricing dinámico, atención básica al cliente, asignación de habitaciones y análisis de reseñas con modelos predictivos y agentes conversacionales. Aun así, resolver problemas complejos in situ, liderar equipos y proteger la experiencia real del huésped mantiene una necesidad humana clara, especialmente en la hotelería española."
+  },
+  {
+    "cno": "1419",
+    "score": 4.5,
+    "justificacion": "En otras empresas de alojamiento el trabajo sigue siendo una combinación de explotación operativa, control económico y atención al cliente en un entorno muy físico. La IA puede automatizar reservas, forecasting, atención recurrente, scheduling, marketing y parte del revenue management con chatbots, LLMs y optimización. Pero la supervisión del servicio, la resolución de incidencias materiales y la relación con empleados, proveedores y clientes todavía anclan el puesto en un modelo híbrido, no plenamente automatizable."
+  },
+  {
+    "cno": "1421",
+    "score": 4.0,
+    "justificacion": "La gerencia de restaurante combina operaciones presenciales intensivas: sala, cocina, compras, turnos, costes, calidad y atención al cliente. La IA puede mejorar previsión de demanda, escandallos, compras, precios, reservas y respuesta a consultas mediante analítica, visión en cocina y asistentes conversacionales. Sin embargo, coordinar personas bajo presión, resolver incidencias en vivo y sostener una experiencia gastronómica consistente sigue requiriendo presencia y criterio humano continuos."
+  },
+  {
+    "cno": "1429",
+    "score": 4.0,
+    "justificacion": "En catering y restauración colectiva hay más planificación logística y contractual, pero la ejecución sigue dependiendo de operaciones físicas y coordinación presencial. La IA puede optimizar rutas, menús, producción, compras, aprovisionamiento y control documental con analítica, LLMs y software de scheduling. Lo que no sustituye bien es la gestión del servicio en eventos, la respuesta a imprevistos y la supervisión directa de calidad, seguridad alimentaria y personal."
+  },
+  {
+    "cno": "1431",
+    "score": 5.0,
+    "justificacion": "La dirección de comercio mayorista tiene bastante trabajo digital: previsión, negociación con proveedores, pricing, surtido, margen, inventario y ventas B2B. La IA ya puede apoyar previsiones, reposición, segmentación de clientes, pricing y generación de ofertas con modelos predictivos, motores de optimización y LLMs. Pero la negociación comercial compleja, la gestión de riesgos de suministro y la toma de decisiones estratégicas entre canales siguen siendo sustancialmente humanas."
+  },
+  {
+    "cno": "1432",
+    "score": 4.5,
+    "justificacion": "En comercio minorista el rol mezcla analítica de ventas y stock con operaciones de tienda, personal y experiencia del cliente. La IA puede automatizar forecasting, promociones, surtido, pricing, detección de merma y atención básica, además de ayudar en planificación de turnos. Aun así, la gestión diaria del punto de venta, la cultura de equipo y la resolución presencial de problemas con clientes y operaciones mantienen una fricción alta para una automatización plena."
+  },
+  {
+    "cno": "2111",
+    "score": 4.5,
+    "justificacion": "El médico de familia trabaja sobre consulta clínica híbrida: anamnesis, exploración, diagnóstico inicial, seguimiento, prevención y coordinación asistencial. La IA ya puede resumir historia clínica, sugerir diagnósticos diferenciales, priorizar riesgos y apoyar decisiones basadas en guías con LLMs clínicos, sistemas de apoyo a la decisión y modelos predictivos. Pero explorar físicamente, asumir responsabilidad médica, contextualizar síntomas ambiguos y sostener la relación terapéutica siguen fuera del alcance de una sustitución amplia."
+  },
+  {
+    "cno": "2112",
+    "score": 4.5,
+    "justificacion": "Otros especialistas médicos cubren un espectro amplio en el que conviven tareas cognitivas muy digitalizables con procedimientos físicos y responsabilidad clínica elevada. La IA ya rinde bien en apoyo diagnóstico, lectura de imagen, documentación, codificación y seguimiento de protocolos mediante visión artificial y LLMs especializados. Sin embargo, el portafolio completo incluye exploración, intervención, consentimiento, juicio sobre casos atípicos y responsabilidad legal, lo que reduce la vulnerabilidad agregada."
+  },
+  {
+    "cno": "2140",
+    "score": 5.0,
+    "justificacion": "La farmacia combina revisión técnica de tratamientos, dispensación, consejo sanitario, gestión de stock y cumplimiento normativo. La IA puede detectar interacciones, optimizar inventario, personalizar información al paciente y automatizar buena parte del back office con sistemas expertos, LLMs y robotización de dispensación. Pero la validación profesional, la interacción con pacientes y médicos y el marco regulado de la dispensación en España frenan una sustitución directa de la ocupación."
+  },
+  {
+    "cno": "2151",
+    "score": 3.0,
+    "justificacion": "La odontología es una profesión muy física: exploración oral, diagnóstico, procedimientos manuales, control del dolor y relación clínica. La IA puede ayudar a interpretar radiografías, planificar tratamientos, documentar la consulta y diseñar prótesis con visión artificial y software CAD/CAM. Aun así, la destreza manual, la ejecución en boca del paciente y la gestión de complicaciones hacen que la automatización actual sea más de apoyo que de sustitución."
+  },
+  {
+    "cno": "2152",
+    "score": 2.5,
+    "justificacion": "La fisioterapia depende de evaluación corporal, contacto físico, movilización, corrección manual y adaptación en tiempo real a la respuesta del paciente. La IA puede asistir con análisis de movimiento por visión artificial, planes de ejercicios, seguimiento remoto y documentación clínica. Pero el valor central del trabajo está en la intervención física, el tacto clínico y la personalización presencial, por lo que la exposición actual sigue siendo baja."
+  },
+  {
+    "cno": "2153",
+    "score": 5.5,
+    "justificacion": "Dietistas y nutricionistas realizan evaluación, educación, diseño de planes, seguimiento y ajuste conductual, con una parte importante del trabajo basada en información y comunicación. La IA puede analizar ingestas, generar menús, estimar necesidades, adaptar recomendaciones y responder dudas frecuentes mediante LLMs, visión para reconocimiento de alimentos y motores de recomendación. No obstante, la adherencia real, los casos clínicos complejos y la motivación del paciente siguen dependiendo bastante del profesional."
+  },
+  {
+    "cno": "2155",
+    "score": 4.0,
+    "justificacion": "La optometría mezcla pruebas instrumentales, evaluación funcional de la visión, ajuste de correcciones y atención al paciente. La IA puede interpretar pruebas, detectar patrones de riesgo, apoyar cribados y automatizar documentación con visión artificial y sistemas de apoyo clínico. Sin embargo, la interacción directa con el paciente, la realización de pruebas presenciales y la responsabilidad sobre decisiones clínicas y comerciales mantienen un componente humano relevante."
+  },
+  {
+    "cno": "2156",
+    "score": 3.0,
+    "justificacion": "La terapia ocupacional se basa en observación situada, intervención personalizada y trabajo directo sobre autonomía y adaptación funcional. La IA puede ayudar a evaluar progresos, sugerir ejercicios, registrar sesiones y monitorizar actividades mediante sensores, visión artificial y LLMs. Pero la relación terapéutica, la lectura del contexto familiar y la intervención práctica sobre capacidades cotidianas siguen siendo difíciles de reemplazar de manera creíble."
+  },
+  {
+    "cno": "2252",
+    "score": 2.0,
+    "justificacion": "Los técnicos en educación infantil trabajan en un entorno intensamente presencial: cuidado, observación, juego, socialización, seguridad y comunicación con familias. La IA puede generar materiales, apoyar el seguimiento del desarrollo y automatizar partes del registro y la planificación educativa. Pero supervisar a niños pequeños, responder a emociones y riesgos en tiempo real y construir vínculos seguros es una tarea fundamentalmente humana."
+  },
+  {
+    "cno": "2425",
+    "score": 4.5,
+    "justificacion": "El trabajo combina análisis técnico, normativa, cartografía y proyectos con inspección de campo, medio físico y relación con administraciones y propietarios. La IA puede procesar imágenes satelitales, modelizar riesgos, apoyar inventarios y redactar informes con SIG, visión artificial, teledetección y LLMs. Aun así, las visitas sobre terreno, la validación técnica in situ y la interpretación ecológica contextual siguen limitando una automatización profunda."
+  },
+  {
+    "cno": "2427",
+    "score": 4.5,
+    "justificacion": "La enología mezcla ciencia de datos y control de procesos con presencia física en viñedo, bodega, cata y toma de decisiones sensoriales. La IA puede optimizar fermentación, predecir parámetros, analizar laboratorio, vigilar calidad y apoyar trazabilidad con sensores, modelos predictivos y visión artificial. Pero la valoración organoléptica, el ajuste artesanal y la gestión de campaña en condiciones cambiantes mantienen una dependencia humana clara."
+  },
+  {
+    "cno": "2434",
+    "score": 6.5,
+    "justificacion": "La ingeniería aeronáutica tiene un núcleo muy digital: diseño, simulación, cálculo, documentación técnica, verificación y optimización. La IA ya puede acelerar modelado, generación de código y documentación, análisis de requisitos, mantenimiento predictivo y exploración de diseños con IA generativa, simulación asistida y aprendizaje automático. Sin embargo, la certificación, la seguridad crítica y la responsabilidad sobre sistemas complejos hacen que el ingeniero no desaparezca, sino que cambie mucho de función."
+  },
+  {
+    "cno": "2441",
+    "score": 6.0,
+    "justificacion": "La ingeniería eléctrica combina modelado, dimensionamiento, normativa, cálculo y soporte a obra o explotación. La IA puede generar esquemas preliminares, revisar diseños, analizar cargas, optimizar redes y detectar anomalías mediante copilots de ingeniería, simulación y modelos predictivos. Pero la validación normativa, las decisiones de seguridad, la coordinación con campo y la firma técnica siguen requiriendo supervisión profesional relevante."
+  },
+  {
+    "cno": "2462",
+    "score": 5.0,
+    "justificacion": "La ingeniería técnica de obras públicas es un rol híbrido: proyecto, mediciones, documentación, coordinación y bastante presencia en obra. La IA puede acelerar presupuestos, planificación, revisión documental, detección de incidencias y seguimiento de avance con visión artificial, BIM y LLMs. Aun así, el control de ejecución, la seguridad, la interlocución con contratas y la resolución de problemas de terreno reducen la exposición frente a profesiones puramente de oficina."
+  },
+  {
+    "cno": "2463",
+    "score": 6.0,
+    "justificacion": "La ingeniería técnica mecánica incluye cálculo, diseño, documentación, mejora de procesos y soporte técnico, con un fuerte componente digital. La IA puede generar variantes de diseño, revisar planos, proponer materiales, optimizar mantenimiento y automatizar documentación con CAD asistido, gemelos digitales y modelos predictivos. Pero la integración con fabricación real, la responsabilidad técnica y la resolución de fallos en contexto siguen necesitando experiencia humana."
+  },
+  {
+    "cno": "2471",
+    "score": 5.5,
+    "justificacion": "Los ingenieros técnicos en electricidad realizan diseño, cálculo, inspección y soporte a instalaciones con mezcla de trabajo documental y visitas. La IA puede asistir en simulación, detección de incumplimientos, análisis de consumos, mantenimiento predictivo y elaboración de memorias técnicas. No obstante, la verificación in situ, la seguridad eléctrica, la relación con instaladores y la firma o validación profesional siguen imponiendo un techo claro a la automatización."
+  },
+  {
+    "cno": "2473",
+    "score": 6.0,
+    "justificacion": "Las telecomunicaciones tienen bastante contenido digital: diseño de red, dimensionamiento, pruebas, monitorización y resolución de incidencias. La IA ya ayuda en planificación de capacidad, optimización de tráfico, detección de anomalías, documentación y automatización de operaciones con AIOps, analítica de red y copilots. Pero la arquitectura final, la seguridad, la integración con infraestructuras físicas y la respuesta a fallos complejos todavía requieren intervención humana."
+  },
+  {
+    "cno": "2591",
+    "score": 4.5,
+    "justificacion": "Notarios y registradores trabajan sobre documentos, verificación jurídica, calificación, fe pública y control formal, por lo que una parte importante es cognitiva y estructurada. La IA puede extraer cláusulas, revisar inconsistencias, comparar precedentes, preparar borradores y apoyar due diligence con LLMs jurídicos y procesamiento documental. Pero la fe pública, la calificación registral, la identidad de las partes y la responsabilidad legal reservada al titular reducen mucho la sustitución efectiva."
+  },
+  {
+    "cno": "2599",
+    "score": 6.0,
+    "justificacion": "En otros profesionales del derecho suele haber bastante investigación, redacción, revisión contractual y análisis normativo, tareas muy tratables digitalmente. La IA puede buscar jurisprudencia, resumir expedientes, generar borradores y detectar riesgos o contradicciones con LLMs jurídicos y búsqueda semántica. Sin embargo, la estrategia procesal, la interpretación fina en casos nuevos y la representación o responsabilidad profesional siguen requiriendo supervisión humana fuerte."
+  },
+  {
+    "cno": "2612",
+    "score": 6.0,
+    "justificacion": "El asesoramiento financiero mezcla análisis de cartera, información regulatoria, propuesta de productos y relación comercial con el cliente. La IA puede perfilar riesgos, simular escenarios, resumir mercados, generar recomendaciones preliminares y preparar documentación con modelos cuantitativos y LLMs. Pero la responsabilidad fiduciaria, la adecuación regulatoria y la confianza interpersonal siguen siendo elementos muy difíciles de delegar completamente a una máquina, especialmente en entornos regulados."
+  },
+  {
+    "cno": "2613",
+    "score": 6.5,
+    "justificacion": "El analista financiero trabaja sobre datos, estados financieros, modelos, comparables y elaboración de informes, un terreno muy digital. La IA ya automatiza parte importante del scraping, modelización, resumen de resultados, lectura de documentación y generación de notas analíticas con LLMs, ML y automatización de hojas de cálculo. Lo que sigue exigiendo intervención humana es el juicio sobre supuestos, la lectura estratégica del contexto y la responsabilidad sobre recomendaciones con dinero real."
+  },
+  {
+    "cno": "2621",
+    "score": 6.5,
+    "justificacion": "Los analistas de gestión y organización estudian procesos, indicadores, costes y estructuras, con predominio de trabajo informacional y de recomendación. La IA puede mapear procesos, detectar cuellos de botella, generar hipótesis, simular mejoras y producir entregables con process mining, analítica y LLMs. Pero transformar una organización requiere influencia, priorización política y negociación con áreas, aspectos que hoy siguen siendo mucho menos automatizables que el diagnóstico."
+  },
+  {
+    "cno": "2622",
+    "score": 6.0,
+    "justificacion": "La administración de política de empresa suele concentrar normativa interna, procedimientos, reporting, compliance y coordinación administrativa. La IA puede redactar políticas, comparar versiones, sintetizar cambios regulatorios, responder consultas internas y automatizar circuitos documentales con LLMs y RPA. Aun así, validar criterios, asumir riesgos de cumplimiento y arbitrar excepciones organizativas sigue siendo un trabajo que requiere responsabilidad humana explícita."
+  },
+  {
+    "cno": "2652",
+    "score": 7.0,
+    "justificacion": "Las relaciones públicas combinan narrativa, medios, monitorización, argumentarios, eventos y gestión reputacional, con bastante peso en lenguaje y contenidos. La IA ya puede generar notas de prensa, Q&A, mensajes segmentados, análisis de sentimiento y monitorización de medios con LLMs y social listening. Sin embargo, la gestión de crisis, la intuición reputacional y la relación con periodistas, portavoces y stakeholders clave todavía dependen mucho de criterio humano."
+  },
+  {
+    "cno": "2712",
+    "score": 8.0,
+    "justificacion": "Analizar y diseñar software es una ocupación altamente digital basada en requisitos, arquitectura, modelado, documentación y prototipado. La IA ya genera código, test, documentación, propuestas de arquitectura, refactors y análisis de incidencias con copilots de desarrollo, LLMs y agentes sobre repositorios. Aun así, la calidad final sigue dependiendo de contexto de negocio, decisiones de trade-off, seguridad y coordinación entre sistemas, por lo que el rol cambia drásticamente pero no desaparece por completo."
+  },
+  {
+    "cno": "2713",
+    "score": 8.0,
+    "justificacion": "En web y multimedia gran parte del trabajo está en código, maquetación, contenido, activos, experiencia de usuario y producción digital. La IA puede crear front-end, componentes, imágenes, copy, wireframes, pruebas y variantes creativas con generadores de código, diseño asistido e IA multimodal. El límite sigue estando en la coherencia de producto, la integración real, la accesibilidad, la marca y la supervisión sobre calidad y seguridad."
+  },
+  {
+    "cno": "2719",
+    "score": 8.0,
+    "justificacion": "Estas especialidades de software y multimedia no clasificadas suelen tener un núcleo de producción digital y resolución de problemas estructurados. La IA ya cubre una parte muy grande del borrador técnico, la generación de código, documentación, test, activos y soporte de mantenimiento. Pero la integración compleja, la responsabilidad sobre sistemas vivos y la toma de decisiones con impacto empresarial siguen exigiendo profesionales humanos, aunque con mucha menos carga manual que antes."
+  },
+  {
+    "cno": "2723",
+    "score": 6.5,
+    "justificacion": "El análisis de redes informáticas combina monitorización, configuración, diseño, capacidad, seguridad y resolución de incidencias. La IA puede detectar anomalías, correlacionar eventos, sugerir cambios, documentar topologías y automatizar runbooks mediante AIOps, observabilidad inteligente y LLMs. Sin embargo, la ejecución sobre infraestructuras críticas, la ciberseguridad y la gestión de fallos no triviales todavía necesitan expertos que entiendan el contexto completo."
+  },
+  {
+    "cno": "2729",
+    "score": 6.5,
+    "justificacion": "En bases de datos y redes, muchas tareas son digitales y repetibles: modelado, tuning, monitorización, copias, permisos, consultas y troubleshooting. La IA puede recomendar índices, detectar cuellos de botella, automatizar scripts, clasificar alertas y apoyar migraciones con copilots, observabilidad y agentes técnicos. Aun así, la recuperación ante incidentes graves, la seguridad, la arquitectura y el control del cambio en producción siguen requiriendo supervisión humana fuerte."
+  },
+  {
+    "cno": "2824",
+    "score": 3.5,
+    "justificacion": "El trabajo social y la educación social se apoyan en evaluación humana, intervención contextual, coordinación institucional y contacto directo con personas a menudo vulnerables. La IA puede ayudar a resumir expedientes, detectar señales de riesgo, planificar casos y facilitar documentación con LLMs y analítica. Pero la intervención real, la confianza, la mediación y el juicio ético en contextos complejos siguen siendo difícilmente sustituibles."
+  },
+  {
+    "cno": "2912",
+    "score": 7.0,
+    "justificacion": "Bibliotecarios y documentalistas gestionan información, clasificación, búsqueda, preservación y referencia, y curación, un espacio muy intensivo en datos y documentos. La IA puede catalogar, extraer metadatos, resumir colecciones, responder consultas y mejorar descubrimiento con búsqueda semántica, OCR avanzado y LLMs. Sin embargo, la preservación, la política documental, la validación de fuentes y el servicio experto de referencia todavía conservan un componente profesional relevante."
+  },
+  {
+    "cno": "2934",
+    "score": 3.5,
+    "justificacion": "La dirección de cine o teatro combina visión artística, liderazgo creativo, coordinación de equipos y decisiones en rodaje o escena. La IA puede generar storyboards, previsualizaciones, variantes de guion, planificación de producción y apoyo en edición con modelos generativos y herramientas multimodales. Pero definir una propuesta artística coherente, dirigir interpretación y tomar decisiones creativas bajo presión sigue siendo una función profundamente humana."
+  },
+  {
+    "cno": "2935",
+    "score": 2.0,
+    "justificacion": "Actuar implica cuerpo, voz, presencia, timing, interacción con otros intérpretes y construcción emocional ante cámara o público. La IA puede crear dobles sintéticos, voces clonadas, previz o personajes digitales y asistir ensayos o casting con herramientas generativas. Aun así, la interpretación encarnada, el carisma y la legitimidad cultural del actor humano siguen siendo el centro de la ocupación en 2026."
+  },
+  {
+    "cno": "3129",
+    "score": 5.5,
+    "justificacion": "Estos técnicos suelen combinar medición, análisis, control de procesos, soporte experimental y documentación técnica. La IA puede tratar datos instrumentales, detectar anomalías, generar informes, apoyar calibraciones y optimizar parámetros con analítica, visión artificial y LLMs. Pero el trabajo con equipos físicos, muestras, entornos industriales y validación experimental en campo o laboratorio sigue exigiendo intervención humana notable."
+  },
+  {
+    "cno": "3151",
+    "score": 4.0,
+    "justificacion": "Jefes y oficiales de máquinas operan y supervisan sistemas mecánicos complejos en entornos físicos críticos, con seguridad, mantenimiento y respuesta a averías. La IA puede apoyar mantenimiento predictivo, monitorización de alarmas, diagnóstico de fallos y optimización de consumo con sensores y modelos predictivos. No obstante, la operación en tiempo real, la seguridad marítima o industrial y la intervención mecánica directa limitan mucho la sustitución."
+  },
+  {
+    "cno": "3323",
+    "score": 5.0,
+    "justificacion": "Los técnicos superiores en dietética realizan evaluación nutricional, planes, educación y seguimiento, con un volumen relevante de trabajo de información estandarizable. La IA puede generar menús, adaptar recomendaciones, calcular necesidades y monitorizar adherencia con aplicaciones, LLMs y reconocimiento de alimentos. Pero la personalización clínica, la motivación del paciente y la intervención en casos complejos siguen requiriendo un profesional humano."
+  },
+  {
+    "cno": "3402",
+    "score": 6.5,
+    "justificacion": "La venta de préstamos y créditos incluye captación, evaluación preliminar, documentación, argumentación comercial y seguimiento del expediente. La IA ya puede precalificar clientes, detectar fraude, personalizar ofertas, responder dudas y automatizar documentación con scoring, OCR y agentes conversacionales. Sin embargo, el cierre comercial, la responsabilidad regulatoria y la gestión de excepciones o clientes complejos siguen siendo menos automatizables."
+  },
+  {
+    "cno": "3405",
+    "score": 6.0,
+    "justificacion": "Tasadores combinan inspección física con análisis comparativo, documentación, normativa y valoración, por lo que el componente cognitivo es alto pero no total. La IA puede estimar valoraciones preliminares, analizar comparables, leer documentación, detectar anomalías y producir borradores con modelos AVM, visión artificial y LLMs. Aun así, la visita, la responsabilidad profesional y la valoración de singularidades del activo mantienen un papel humano importante."
+  },
+  {
+    "cno": "3531",
+    "score": 7.0,
+    "justificacion": "La representación aduanera se basa en clasificación, documentación, normativa, validación y tramitación digital, con bastante estructura y reglas explícitas. La IA puede automatizar lectura documental, codificación preliminar, detección de inconsistencias, cálculo y preparación de expedientes con OCR, motores de reglas y LLMs. Pero las incidencias complejas, la responsabilidad ante errores y la interpretación fina de casos fronterizos todavía requieren especialistas humanos."
+  },
+  {
+    "cno": "3539",
+    "score": 5.0,
+    "justificacion": "Los agentes artísticos, deportivos y comerciales mezclan scouting, negociación, red relacional, contratos y posicionamiento de carrera. La IA puede analizar audiencias, preparar propuestas, revisar contratos, identificar oportunidades y monitorizar mercados con analítica y LLMs. Sin embargo, el valor diferencial está en la confianza, el acceso, la negociación y la gestión de intereses personales, elementos que siguen muy poco automatizados."
+  },
+  {
+    "cno": "3712",
+    "score": 3.5,
+    "justificacion": "La investigación privada exige observación, desplazamiento, trabajo de campo, manejo probatorio y juicio sobre conducta humana. La IA puede acelerar búsquedas OSINT, análisis de vídeo, reconocimiento de patrones, síntesis documental y cruces de datos con visión artificial y LLMs. Pero la obtención legal de prueba, la presencia discreta en terreno y la interpretación contextual de conductas siguen dependiendo sobre todo del investigador."
+  },
+  {
+    "cno": "3734",
+    "score": 3.5,
+    "justificacion": "El chef combina creatividad culinaria con ejecución física, coordinación de cocina, control de tiempos, compras y liderazgo de equipo. La IA puede sugerir recetas, escandallos, planificación de producción, previsión de demanda y control de mermas con analítica y modelos generativos. Aun así, cocinar, emplatar, catar, dirigir el pase y sostener una experiencia gastronómica consistente siguen siendo tareas fuertemente presenciales."
+  },
+  {
+    "cno": "4111",
+    "score": 8.5,
+    "justificacion": "Los empleados de contabilidad trabajan sobre asientos, conciliaciones, facturas, cierres, comprobaciones y reporting, un entorno muy estructurado y digital. La IA ya automatiza captura documental, clasificación contable, conciliación, detección de anomalías y borradores de cierre con OCR, RPA, modelos contables y LLMs. La supervisión humana sigue siendo necesaria para excepciones, criterio fiscal y control interno, pero la mayor parte del trabajo operativo está altamente expuesta."
+  },
+  {
+    "cno": "4210",
+    "score": 7.0,
+    "justificacion": "Los empleados de bibliotecas y archivos realizan catalogación, préstamo, ordenación, búsqueda, apoyo al usuario y mantenimiento documental. La IA puede clasificar fondos, extraer metadatos, responder consultas frecuentes, digitalizar y localizar documentos con OCR, búsqueda semántica y LLMs. Sin embargo, la atención especializada, la preservación física y la gestión de colecciones con criterio institucional todavía dejan un espacio humano relevante."
+  },
+  {
+    "cno": "4221",
+    "score": 6.0,
+    "justificacion": "En correos, fuera del mostrador, predominan clasificación, preparación, trazabilidad y procesos logísticos relativamente repetitivos. La IA y la automatización pueden optimizar rutas internas, leer etiquetas, clasificar envíos, prever cargas y detectar incidencias con visión artificial y software logístico. Pero la manipulación física, la variedad operativa y la integración con flujos reales de almacén y reparto reducen algo la exposición final."
+  },
+  {
+    "cno": "4222",
+    "score": 8.5,
+    "justificacion": "Codificar y corregir pruebas de imprenta es una ocupación muy centrada en texto, formato, consistencia y detección de errores. La IA ya corrige ortografía, estilo, consistencia terminológica, maquetación básica y comparaciones entre versiones con LLMs y herramientas de diff documental. La revisión humana sigue añadiendo valor en intención editorial y criterio de marca, pero la base operativa del puesto está muy expuesta."
+  },
+  {
+    "cno": "4301",
+    "score": 9.0,
+    "justificacion": "Grabar datos consiste en capturar, transcribir, validar y pasar información a sistemas, una tarea casi totalmente digital y reglada. La IA ya hace OCR, reconocimiento de voz, extracción de campos, validación y carga automática con gran precisión en muchos casos. Solo sobreviven excepciones, controles y entornos con mala calidad documental, por lo que es una de las ocupaciones con mayor vulnerabilidad actual."
+  },
+  {
+    "cno": "4422",
+    "score": 7.0,
+    "justificacion": "La recepción de hotel combina check-in, atención al cliente, gestión de reservas, cobros, información y resolución de incidencias sencillas. La IA puede automatizar reservas, asignación de habitaciones, upselling, atención multilingüe y parte del check-in con kioscos, biometría, chatbots y LLMs. Pero las incidencias complejas, la hospitalidad presencial y el manejo de excepciones en vivo siguen justificando personal humano, aunque en menor número."
+  },
+  {
+    "cno": "4424",
+    "score": 8.5,
+    "justificacion": "El teleoperador trabaja sobre conversaciones muy estructuradas: información, soporte básico, ventas guiadas, verificación y derivación. La IA ya puede atender voz y texto, autenticar, seguir guiones, resumir llamadas y resolver una gran parte de los casos repetitivos con ASR, TTS, LLMs y agentes conversacionales. Lo humano queda sobre todo para excepciones, quejas complejas o clientes vulnerables, de modo que la exposición es muy alta."
+  },
+  {
+    "cno": "4443",
+    "score": 5.0,
+    "justificacion": "En salas de juego hay tareas presenciales de atención, cobro, vigilancia básica y soporte operativo, mezcladas con procesos reglados. La IA puede monitorizar comportamiento, detectar anomalías, automatizar pagos, personalizar promociones y responder consultas frecuentes con visión artificial y software transaccional. Pero el entorno físico, el control presencial y la interacción con clientes en tiempo real impiden una sustitución tan alta como en un call center."
+  },
+  {
+    "cno": "4444",
+    "score": 7.0,
+    "justificacion": "En casas de empeño y préstamos abundan la valoración preliminar, documentación, verificación, scoring y atención comercial sobre procesos bastante estructurados. La IA puede analizar objetos e imágenes, revisar documentación, puntuar riesgo y automatizar mucha interacción de ventanilla con visión artificial, OCR y modelos de scoring. Sin embargo, la custodia física, la prevención de fraude complejo y la responsabilidad regulatoria siguen exigiendo intervención humana."
+  },
+  {
+    "cno": "5499",
+    "score": 5.5,
+    "justificacion": "Los vendedores no clasificados en otros epígrafes suelen combinar argumentación comercial, atención, reposición, cierre y algo de operación física. La IA puede recomendar productos, asistir ventas, responder preguntas, personalizar ofertas y automatizar cobro o seguimiento con asistentes conversacionales y analítica. Pero la persuasión en persona, la adaptación al contexto y la ejecución física del servicio o de la venta aún sostienen parte importante del empleo."
+  },
+  {
+    "cno": "5612",
+    "score": 2.5,
+    "justificacion": "Los auxiliares de enfermería de atención primaria realizan apoyo asistencial muy físico: higiene, movilización, acompañamiento, observación y tareas básicas clínicas. La IA puede ayudar con documentación, recordatorios, monitorización y priorización de alertas mediante sensores y sistemas de apoyo. Pero el cuidado corporal directo, la presencia junto al paciente y la respuesta humana ante malestar o dependencia mantienen una vulnerabilidad baja."
+  },
+  {
+    "cno": "5622",
+    "score": 2.0,
+    "justificacion": "Los técnicos de emergencias sanitarias operan en movilidad y bajo presión, con traslado, soporte vital, coordinación y actuación física inmediata. La IA puede asistir en triaje, navegación, telemedicina, monitorización y protocolos con sistemas predictivos y copilots clínicos. Sin embargo, intervenir en ambulancia o escena, mover pacientes y tomar decisiones urgentes en un entorno imprevisible sigue siendo muy poco sustituible."
+  },
+  {
+    "cno": "5812",
+    "score": 2.5,
+    "justificacion": "Los tratamientos de estética y bienestar son servicios intensamente presenciales, manuales y personalizados sobre el cuerpo del cliente. La IA puede apoyar diagnóstico visual de piel, recomendación de productos, agenda, marketing y seguimiento con visión artificial y asistentes conversacionales. Pero la ejecución física del tratamiento, la confianza y la experiencia sensorial siguen anclando la ocupación en lo humano."
+  },
+  {
+    "cno": "5821",
+    "score": 3.5,
+    "justificacion": "Auxiliares de vuelo y camareros de avión, barco y tren mezclan servicio, seguridad, asistencia al pasajero y respuesta a incidencias en un espacio físico. La IA puede automatizar información, venta a bordo, traducción y parte de la atención básica mediante asistentes de voz y visión. Pero la seguridad, la evacuación, el trato humano y la operación en trayecto mantienen una necesidad clara de personal presente."
+  },
+  {
+    "cno": "5823",
+    "score": 4.0,
+    "justificacion": "Los acompañantes turísticos trabajan sobre explicación, organización, coordinación de grupos y atención presencial. La IA ya puede traducir, generar itinerarios, responder preguntas y ofrecer capas de información enriquecida mediante audio guías inteligentes, visión y LLMs. Aun así, manejar grupos reales, imprevistos, ritmo, emociones y logística en destino sigue requiriendo una figura humana reconocible."
+  },
+  {
+    "cno": "5832",
+    "score": 2.0,
+    "justificacion": "El mayordomo del servicio doméstico realiza coordinación personal, atención directa, discreción, organización del hogar y tareas presenciales muy situadas. La IA puede ayudar con agendas, compras, inventario, domótica y recordatorios. Pero la confianza, la ejecución física y la adaptación continua a preferencias muy particulares hacen que la exposición actual sea baja."
+  },
+  {
+    "cno": "5921",
+    "score": 2.0,
+    "justificacion": "La policía nacional combina presencia en calle, uso legítimo de la fuerza, investigación, mediación, custodia y decisiones de alta responsabilidad. La IA puede apoyar análisis de vídeo, búsqueda documental, predicción de patrones y priorización operativa con visión artificial y analítica. Pero la actuación coercitiva, el juicio jurídico inmediato y las restricciones regulatorias sobre IA en seguridad limitan mucho una sustitución real."
+  },
+  {
+    "cno": "5999",
+    "score": 3.0,
+    "justificacion": "Otros servicios de protección y seguridad mezclan vigilancia presencial, control de accesos, rondas e intervención básica. La IA puede automatizar parte del monitoreo, detección de intrusiones, verificación de identidad y gestión de alertas con visión artificial y sensores. Pero la presencia disuasoria, la actuación física y la responsabilidad ante incidentes mantienen una parte del trabajo claramente humana."
+  },
+  {
+    "cno": "6120",
+    "score": 3.0,
+    "justificacion": "En huertas, invernaderos, viveros y jardines el trabajo es físico y variable: plantación, poda, riego, tratamiento, recolección y mantenimiento. La IA puede optimizar riego, detectar plagas, prever producción y guiar operaciones con visión artificial, sensores y agricultura de precisión. Sin embargo, la manipulación delicada, la movilidad en terreno y el coste de robotizar muchas tareas en explotaciones pequeñas frenan la sustitución."
+  },
+  {
+    "cno": "6410",
+    "score": 3.0,
+    "justificacion": "Las actividades forestales y del medio natural exigen desplazamiento, manejo de herramientas, evaluación en terreno y respuesta a condiciones cambiantes. La IA puede apoyar con teledetección, predicción de riesgo, cartografía y planificación de trabajos mediante satélites, drones y modelos analíticos. Pero la ejecución física, la seguridad y la imprevisibilidad del entorno natural siguen reduciendo mucho la automatización efectiva."
+  },
+  {
+    "cno": "7122",
+    "score": 2.5,
+    "justificacion": "Canteros y trabajadores de piedra realizan corte, labra, ajuste y acabado con un peso alto de destreza manual y presencia física. La IA puede apoyar diseño, medición, CNC y control de calidad con visión artificial y software CAM. Pero en obra y taller la manipulación material, el ajuste fino y la variabilidad de piezas reales continúan siendo muy dependientes de la mano humana."
+  },
+  {
+    "cno": "7132",
+    "score": 2.5,
+    "justificacion": "Instalar cerramientos y carpintería metálica es un trabajo de fabricación y montaje físico con medición, ajuste y seguridad. La IA puede mejorar diseño, presupuestos, planificación, corte asistido y control dimensional con CAD/CAM y visión artificial. Aun así, transportar, ensamblar y ajustar elementos en obra sigue siendo una actividad claramente presencial y poco sustituible en 2026."
+  },
+  {
+    "cno": "7222",
+    "score": 2.0,
+    "justificacion": "El montaje e instalación de gas en edificios requiere desplazamiento, manipulación física, pruebas, seguridad y cumplimiento normativo estricto. La IA puede asistir en diagnóstico, documentación, comprobación de procedimientos y mantenimiento predictivo. Pero la instalación real, el riesgo asociado y la necesidad de certificación y firma técnica mantienen una vulnerabilidad baja."
+  },
+  {
+    "cno": "7231",
+    "score": 2.0,
+    "justificacion": "Pintar y empapelar sigue siendo una tarea manual, presencial y adaptada a superficies, materiales y acabados concretos. La IA puede estimar materiales, planificar trabajos, generar presupuestos y ayudar con diseño o visualización previa mediante visión y modelos generativos. Sin embargo, preparar superficies, ejecutar el trabajo y corregir defectos in situ continúan siendo tareas físicas difíciles de automatizar económicamente."
+  },
+  {
+    "cno": "7291",
+    "score": 1.5,
+    "justificacion": "Montar cubiertas implica trabajo en altura, manipulación de materiales, seguridad, coordinación y ajuste físico en obra. La IA puede asistir en medición, planificación, inspección por dron y prevención de riesgos. Pero la colocación real, la variabilidad de cada tejado y la necesidad de actuación humana segura hacen que la exposición actual sea muy baja."
+  },
+  {
+    "cno": "7522",
+    "score": 2.0,
+    "justificacion": "Instalar y reparar líneas eléctricas es una ocupación de campo con riesgo, trabajo en altura, averías reales y respuesta física inmediata. La IA puede apoyar predicción de fallos, priorización de mantenimiento, inspección visual y documentación con drones, visión artificial y analítica. Sin embargo, la reparación, la seguridad y la maniobra sobre infraestructura eléctrica siguen requiriendo personal humano especializado."
+  },
+  {
+    "cno": "7617",
+    "score": 2.0,
+    "justificacion": "Los artesanos en madera y materiales similares trabajan sobre diseño aplicado, fabricación manual, acabado y adaptación a piezas y encargos concretos. La IA puede ayudar a visualizar diseños, calcular materiales, generar patrones y apoyar maquinaria digital. Pero el valor del oficio está en la mano, el acabado, la singularidad y la ejecución física, por lo que la sustitución actual es reducida."
+  },
+  {
+    "cno": "7623",
+    "score": 6.5,
+    "justificacion": "Los procesos de encuadernación industrial son repetitivos, secuenciales y relativamente estandarizados, aunque con cierta manipulación física. La IA y la automatización pueden ajustar parámetros, detectar defectos, clasificar piezas y optimizar flujos con visión artificial y control industrial. La supervisión humana sigue siendo útil para cambios de serie y calidad final, pero la base operativa está bastante expuesta."
+  },
+  {
+    "cno": "7706",
+    "score": 5.0,
+    "justificacion": "La elaboración de bebidas alcohólicas distintas del vino mezcla control de proceso, laboratorio, calidad, limpieza y operación de planta. La IA puede optimizar parámetros, detectar desviaciones, prever mantenimiento y controlar calidad con sensores, analítica y visión artificial. Pero la operación física, la higiene, los cambios de producto y la supervisión de planta mantienen una necesidad humana material."
+  },
+  {
+    "cno": "7894",
+    "score": 3.0,
+    "justificacion": "El control de plagas y malas hierbas requiere inspección en campo, aplicación física, seguridad química y trato con clientes o responsables de instalaciones. La IA puede detectar infestaciones, apoyar dosificación, planificar rutas y documentar tratamientos mediante visión, sensores y analítica. Sin embargo, la intervención física, el acceso a entornos diversos y la responsabilidad sanitaria limitan una automatización amplia."
+  },
+  {
+    "cno": "8112",
+    "score": 6.5,
+    "justificacion": "Operar instalaciones de preparación de minerales y rocas es un trabajo industrial con procesos continuos, sensores, parámetros y vigilancia de equipos. La IA ya puede optimizar rendimiento, detectar anomalías, ajustar variables y anticipar mantenimiento con control avanzado y modelos predictivos. Aun así, la seguridad, el manejo de incidencias y la supervisión física de planta siguen exigiendo operadores humanos."
+  },
+  {
+    "cno": "8113",
+    "score": 3.5,
+    "justificacion": "Los sondistas trabajan en campo sobre equipos pesados, condiciones cambiantes, seguridad y ejecución material de perforaciones. La IA puede mejorar planificación, interpretación de datos y mantenimiento predictivo, además de asistir navegación o posicionamiento. Pero la operación física, la geología local y la gestión de riesgos en terreno hacen que la exposición siga siendo moderada-baja."
+  },
+  {
+    "cno": "8143",
+    "score": 7.0,
+    "justificacion": "Operar máquinas para fabricar papel y cartón se apoya en procesos relativamente continuos, parametrización y control de calidad industrial. La IA puede automatizar ajustes, detectar defectos, optimizar consumo y programar mantenimiento con visión artificial y analítica de proceso. La presencia humana sigue siendo necesaria para cambios, incidencias y seguridad, pero una gran parte del valor operativo ya es automatizable."
+  },
+  {
+    "cno": "8191",
+    "score": 6.0,
+    "justificacion": "Los hornos e instalaciones de vidriería y cerámica funcionan sobre parámetros físicos, continuidad de proceso, control térmico y calidad. La IA puede optimizar temperaturas, detectar defectos, reducir consumo y anticipar fallos con sensores y modelos predictivos. Pero el entorno industrial, la seguridad y la necesidad de supervisión de planta reducen la posibilidad de sustituir por completo a los operarios."
+  },
+  {
+    "cno": "8193",
+    "score": 8.0,
+    "justificacion": "El embalaje, embotellamiento y etiquetado son procesos industriales muy repetitivos, medibles y aptos para automatización de línea. La IA ya puede ajustar ritmos, controlar defectos, verificar etiquetas, rechazar piezas y coordinar mantenimiento con visión artificial y control automático. Queda supervisión humana para cambios de formato, incidencias y calidad excepcional, pero la exposición del puesto es alta."
+  },
+  {
+    "cno": "8201",
+    "score": 6.0,
+    "justificacion": "El ensamblaje de maquinaria mecánica combina tareas manuales con secuencias estandarizadas, lectura de planos y control de calidad. La IA puede asistir instrucciones, visión de montaje, detección de errores, planificación y cobots de apoyo con sistemas de visión y automatización industrial. Sin embargo, la manipulación física, la variabilidad y el ajuste final de muchos conjuntos siguen exigiendo operarios humanos."
+  },
+  {
+    "cno": "8209",
+    "score": 6.0,
+    "justificacion": "Los montadores y ensambladores no clasificados en otros epígrafes suelen trabajar en procesos repetibles pero con una dosis variable de manipulación y adaptación física. La IA puede guiar tareas, inspeccionar calidad, secuenciar operaciones y alimentar automatismos mediante visión artificial y software de planta. Aun así, la diversidad de piezas, posturas, utillajes y excepciones hace que la sustitución aún no sea total."
+  },
+  {
+    "cno": "8311",
+    "score": 6.0,
+    "justificacion": "Conducir locomotoras es una tarea de operación física sobre sistemas cada vez más monitorizados y parcialmente automatizados, pero en un entorno de seguridad crítica. La IA puede apoyar conducción asistida, diagnóstico, optimización energética y gestión de incidencias con sistemas automáticos y analítica. No obstante, la responsabilidad sobre pasajeros o mercancías, la supervisión activa y la operación en situaciones no estándar siguen manteniendo al maquinista."
+  },
+  {
+    "cno": "8312",
+    "score": 5.0,
+    "justificacion": "Las maniobras ferroviarias combinan señalización, coordinación, seguridad, documentación y presencia física en patio o terminal. La IA puede optimizar secuencias, apoyar planificación, monitorizar movimientos y detectar riesgos con visión y software de control. Pero la ejecución en entorno ferroviario real, la coordinación situacional y la seguridad operacional siguen necesitando personal humano."
+  },
+  {
+    "cno": "8331",
+    "score": 4.5,
+    "justificacion": "La maquinaria de movimiento de tierras opera en obra real con visibilidad cambiante, seguridad, terreno irregular y coordinación con otros equipos. La IA puede asistir guiado, topografía, mantenimiento y semiautonomía con sensores, GNSS y visión artificial. Sin embargo, la adaptación al terreno, la seguridad y el coste de desplegar autonomía plena hacen que la sustitución actual sea solo parcial."
+  },
+  {
+    "cno": "8411",
+    "score": 5.5,
+    "justificacion": "Conducir automóviles, taxis o furgonetas es una tarea física sobre movilidad, tráfico, atención al cliente y cumplimiento. La IA ya demuestra conducción autónoma en contextos limitados y puede optimizar rutas, cobro, seguridad y asistencia con ADAS y modelos de percepción. Pero la implantación real en España, la variedad urbana y regulatoria y la necesidad de operar en casos límite moderan la vulnerabilidad efectiva en 2026."
+  },
+  {
+    "cno": "8412",
+    "score": 5.5,
+    "justificacion": "Para conductores asalariados de automóviles, taxis y furgonetas, el núcleo de la tarea es el mismo: conducción, servicio, tiempos y gestión básica del viaje o reparto. La IA puede apoyar navegación, asignación dinámica, seguridad y, en entornos acotados, conducción automatizada mediante ADAS y sistemas autónomos. Aun así, la adopción operativa a escala, la responsabilidad legal y los entornos urbanos complejos todavía frenan una sustitución alta inmediata."
+  },
+  {
+    "cno": "9210",
+    "score": 2.5,
+    "justificacion": "La limpieza de oficinas, hoteles y establecimientos similares es un trabajo presencial de movimiento, manipulación, detalle y adaptación a espacios cambiantes. La IA puede ayudar con robots de limpieza de suelos, planificación, control de calidad y monitorización de consumibles. Pero baños, habitaciones, esquinas, objetos y estándares variables siguen requiriendo bastante trabajo humano, especialmente en hostelería."
+  },
+  {
+    "cno": "9229",
+    "score": 2.0,
+    "justificacion": "Otro personal de limpieza suele operar en contextos muy diversos donde la tarea física, la variabilidad y el acceso manual son dominantes. La IA puede automatizar partes concretas, como suelos amplios o planificación de rutas y turnos. Sin embargo, la mayoría del trabajo sigue siendo corporal, localizado y poco rentable de robotizar de forma generalista hoy."
+  },
+  {
+    "cno": "9811",
+    "score": 3.0,
+    "justificacion": "Los peones del transporte y descargadores realizan manipulación física, clasificación, carga, descarga y movimientos en almacén o muelle. La IA puede optimizar secuencias, asignar tareas, guiar carretillas y automatizar parte del picking o clasificación con visión y robots móviles. Pero la heterogeneidad de bultos, espacios y operaciones mantiene todavía una necesidad humana importante."
+  },
+  {
+    "cno": "9820",
+    "score": 4.0,
+    "justificacion": "Reponer consiste en ubicar producto, verificar stock, ordenar lineales y corregir faltas, una mezcla de movimiento físico y tarea relativamente rutinaria. La IA puede detectar huecos, planificar reposición, guiar rutas y analizar planogramas con visión artificial y software retail. No obstante, coger producto, recolocar, tratar excepciones y operar en tienda abierta al público sigue exigiendo bastante trabajo humano."
+  }
+]
