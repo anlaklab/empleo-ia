@@ -26,5 +26,6 @@ dist-ssr
 # Playwright
 .playwright-mcp/
 
-# Screenshots (generated)
+# Screenshots (generated, except docs/)
 *.png
+!docs/*.png

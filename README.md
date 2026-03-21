@@ -1,104 +1,205 @@
-# Vulnerabilidad de Empleos a la Inteligencia Artificial en Espana
+<div align="center">
 
-Analisis interactivo de las **502 ocupaciones** del mercado laboral espanol segun su grado de exposicion a la IA. Datos INE/EPA Q4 2025, ponderaciones Censo 2021, puntuaciones calibradas con 5 factores estructurales Espana.
+# Vulnerabilidad de Empleos a la IA en Espana
 
-**[Ver demo en vivo](https://empleo-ia.lovable.app)** · **[Metodologia V20 (PDF)](https://doi.org/10.5281/zenodo.19076797)**
+### Mapa interactivo de exposicion a la inteligencia artificial del mercado laboral espanol
 
----
+**502 ocupaciones** · **22,4 millones de empleos** · **12 sectores economicos**
 
-## Vista previa
-
-| Vista Detalle (treemap por sector) | Vista Grafico (scatter plot) |
-|---|---|
-| Mapa de calor con ocupaciones agrupadas por sector, coloreadas por nivel de exposicion a la IA | Grafico de dispersion: salario medio vs. exposicion IA, tamano proporcional al empleo |
-
-4 vistas interactivas: **Mapa** (treemap sectorial), **Detalle** (treemap con ocupaciones individuales), **Grafico** (scatter salario vs. exposicion) y **Lista** (tabla ordenable).
+[**Ver Demo en Vivo**](https://empleo-ia.lovable.app) · [**Metodologia V20 (PDF)**](https://doi.org/10.5281/zenodo.19076797) · [**Abrir HTML standalone**](empleo-ia.html)
 
 ---
 
-## Datos
+</div>
 
-| Archivo | Descripcion |
-|---------|-------------|
-| `public/data/spain_502_FINAL_v7.json` | Dataset principal: 502 ocupaciones CNO-11 con empleo, salario, score IA, EU AI Act y justificacion |
-| `public/data/ocupaciones_vulnerabilidad_ia_espana_100.json` | Subconjunto de 100 ocupaciones para validacion inter-modelo |
+![Vista principal — Treemap detallado por sector con 502 ocupaciones coloreadas por nivel de exposicion a la IA](docs/screenshot-hero.png)
 
-### Campos del dataset
+<div align="center">
+
+<table>
+<tr>
+<td align="center"><strong>502</strong><br><sub>Ocupaciones CNO-11</sub></td>
+<td align="center"><strong>22,4M</strong><br><sub>Empleos analizados</sub></td>
+<td align="center"><strong>4.0 / 10</strong><br><sub>Exposicion media</sub></td>
+<td align="center"><strong>20.8%</strong><br><sub>Alta exposicion (>=7)</sub></td>
+<td align="center"><strong>277.5B EUR</strong><br><sub>Indice masa salarial</sub></td>
+</tr>
+</table>
+
+</div>
+
+## Que es esto?
+
+Un dashboard interactivo que analiza **todas las ocupaciones del mercado laboral espanol** segun su grado de exposicion a la inteligencia artificial. Combina datos oficiales del INE (EPA Q4 2025, Censo 2021, EES 2023) con puntuaciones de exposicion IA calibradas con 5 factores estructurales de Espana.
+
+> **No es una prediccion de desplazamiento laboral.** Las puntuaciones miden exposicion teorica, no adopcion real. La evidencia empirica (Anthropic, feb. 2026) muestra diferencias significativas: 94% exposicion teorica vs 33% adopcion observada en ocupaciones informaticas.
+
+---
+
+## Vistas interactivas
+
+<table>
+<tr>
+<td width="50%">
+
+### Treemap detallado
+Cada rectangulo = una ocupacion. Area proporcional al empleo, color segun nivel de exposicion IA (azul = bajo, rojo = alto). Agrupado por sector.
+
+</td>
+<td width="50%">
+
+### Scatter plot
+Salario medio vs. exposicion IA. Tamano de burbuja proporcional al volumen de empleo. Linea de tendencia general.
+
+</td>
+</tr>
+<tr>
+<td>
+
+### Treemap sectorial
+Vista agregada: un bloque por sector con score medio ponderado, total de empleos y numero de ocupaciones. Click para explorar.
+
+</td>
+<td>
+
+### Lista ordenable
+Tabla completa con score, nombre, sector, empleados, salario y clasificacion EU AI Act. Ordenable por cualquier columna.
+
+</td>
+</tr>
+</table>
+
+![Vista scatter — Salario medio vs exposicion IA con tamano proporcional al empleo](docs/screenshot-scatter.png)
+
+**Cada ocupacion incluye:**
+- Puntuacion de exposicion IA (0-10) con indicador de color
+- Numero de empleados y salario medio
+- Clasificacion EU AI Act (Alto riesgo / Limitado / Minimo)
+- Tipo de impacto (Sustitucion / Hibrido / Aumentacion)
+- Vector de automatizacion (texto explicativo del mecanismo de exposicion)
+- Indice de masa salarial x exposicion
+- Botones de compartir (X, LinkedIn, WhatsApp, email, copiar)
+
+---
+
+## Quick Start
+
+### Opcion A: Sin instalacion (HTML autonomo)
+
+```bash
+# Descarga y abre — no necesitas nada mas
+open empleo-ia.html
+```
+
+El archivo `empleo-ia.html` (~421KB) contiene **todo**: React, logica, estilos y los 502 registros de datos embebidos. Solo necesita conexion a internet para cargar React desde CDN y las fuentes de Google.
+
+### Opcion B: Desarrollo con Vite
+
+```bash
+npm install        # Instalar dependencias
+npm run dev        # Servidor de desarrollo (http://localhost:5173)
+npm run build      # Build de produccion
+npm run preview    # Preview del build
+```
+
+---
+
+## Dataset
+
+### `public/data/spain_502_FINAL_v7.json`
 
 | Campo | Tipo | Descripcion |
-|-------|------|-------------|
-| `cno` | int | Codigo CNO-11 a 4 digitos |
-| `nombre` | str | Nombre de la ocupacion |
-| `sector` | str | Sector economico (12 categorias) |
-| `empleo` | int | Numero de empleados (estimacion EPA Q4 2025 + Censo 2021) |
-| `salario_medio_eur` | float | Salario medio anual en euros (EES 2023 + ajustes) |
-| `vulnerabilidad_ia_score` | float | Puntuacion de exposicion a la IA (0-10) |
-| `eu_ai_act` | str | Clasificacion EU AI Act: Alto riesgo / Limitado / Minimo |
-| `tipo_impacto` | str | Tipo de impacto: Sustitucion / Hibrido / Aumentacion |
-| `justificacion` | str | Vector de automatizacion (texto explicativo) |
+|:------|:-----|:------------|
+| `cno` | `int` | Codigo CNO-11 a 4 digitos |
+| `nombre` | `str` | Nombre oficial de la ocupacion |
+| `sector` | `str` | Sector economico (12 categorias) |
+| `empleo` | `int` | N. empleados — estimacion EPA Q4 2025 + Censo 2021 |
+| `salario_medio_eur` | `float` | Salario medio anual (EES 2023 + ajustes) |
+| `vulnerabilidad_ia_score` | `float` | Exposicion a la IA, escala 0-10 |
+| `eu_ai_act` | `str` | `Alto riesgo` · `Limitado` · `Minimo` |
+| `tipo_impacto` | `str` | `Sustitucion` · `Hibrido` · `Aumentacion` |
+| `justificacion` | `str` | Vector de automatizacion (texto largo) |
+
+<details>
+<summary><strong>Campos auxiliares (solo en el JSON completo)</strong></summary>
+
+| Campo | Descripcion |
+|:------|:------------|
+| `empleo_pre_bayes` | Empleo antes del ajuste bayesiano |
+| `empleo_delta_bayes` | Delta del shrinkage bayesiano |
+| `bayes_B_3digit` | Factor de shrinkage a 3 digitos |
+| `census_2021_employed` | Empleados segun Censo 2021 |
+| `employment_method` | Metodo de estimacion utilizado |
+
+</details>
 
 ---
 
 ## Metodologia
 
-- **Empleo**: EPA Q4 2025 microdatos (22,46M ocupados). Cifras a 4 digitos distribuidas proporcionalmente con ponderaciones Censo 2021 (145 subgrupos a 3 digitos CNO). *Estimacion proporcional, no dato observado a 4 digitos.*
-- **Salarios**: Encuesta de Estructura Salarial 2023 (INE), ajustados con primas educativas INE y proxies internacionales. 121 valores unicos.
-- **Puntuaciones IA (0-10)**: Generadas con Gemini 2.5 Pro (T=0.2), calibradas con 5 factores estructurales Espana:
-  1. Indice de digitalizacion DESI 2023 por sector
-  2. Peso del sector servicios
-  3. Proteccion laboral (Estatuto de los Trabajadores)
-  4. EU AI Act (Reglamento 2024/1689, Anexo III)
-  5. Supervision AESIA (Real Decreto 729/2023)
-- **Validacion inter-modelo**: Re-puntuacion ciega de 100 ocupaciones estratificadas por GPT-4o. Resultados: r = 0.715, ICC(2,1) = 0.701, kappa_w = 0.667 (acuerdo sustancial). MAD = 1.0 punto.
-- **Documento completo**: [Metodologia V20 con 44 notas tecnicas (Zenodo)](https://doi.org/10.5281/zenodo.19076797)
+<table>
+<tr>
+<td width="60">
+
+**1**
+
+</td>
+<td>
+
+**Empleo** — EPA Q4 2025 microdatos (22,46M ocupados). Cifras a 4 digitos distribuidas con ponderaciones Censo 2021 a 3 digitos CNO (145 subgrupos). Empirical Bayes shrinkage. *Estimacion proporcional, no dato observado a 4 digitos.*
+
+</td>
+</tr>
+<tr>
+<td>
+
+**2**
+
+</td>
+<td>
+
+**Salarios** — Encuesta de Estructura Salarial 2023 (INE), ajustados con primas educativas INE y proxies internacionales (INSEE Francia, INE-PT Portugal). 121 valores unicos.
+
+</td>
+</tr>
+<tr>
+<td>
+
+**3**
+
+</td>
+<td>
+
+**Puntuaciones IA** — Generadas con Gemini 2.5 Pro (T=0.2, prompts estructurados). Calibradas con 5 factores estructurales Espana: indice DESI 2023, peso sector servicios, proteccion laboral, EU AI Act Anexo III, supervision AESIA.
+
+</td>
+</tr>
+<tr>
+<td>
+
+**4**
+
+</td>
+<td>
+
+**Validacion** — Re-puntuacion ciega de 100 ocupaciones estratificadas por GPT-4o. Resultados: **r = 0.715** · **ICC(2,1) = 0.701** · **kappa_w = 0.667** (acuerdo sustancial). MAD = 1.0 punto. 84% coinciden dentro de +/-2.0 puntos.
+
+</td>
+</tr>
+</table>
+
+> Documento completo con 44 notas tecnicas: [**Metodologia V20 en Zenodo**](https://doi.org/10.5281/zenodo.19076797)
 
 ---
 
-## Dos formas de uso
+## Regenerar el HTML autonomo
 
-### 1. Archivo HTML autonomo (sin build)
+El archivo `empleo-ia.html` es una version self-contained generada a partir de los fuentes React. Para regenerarlo tras modificar codigo:
 
-El archivo **`empleo-ia.html`** es una version completamente autonoma que funciona abriendo directamente en cualquier navegador. No requiere Node.js, npm, ni proceso de build.
+<details>
+<summary><strong>Instrucciones paso a paso</strong></summary>
 
-```bash
-# Simplemente abrir en el navegador
-open empleo-ia.html          # macOS
-xdg-open empleo-ia.html      # Linux
-start empleo-ia.html          # Windows
-```
-
-Dependencias externas (cargadas via CDN):
-- React 18 + ReactDOM 18
-- Babel standalone (transpilacion JSX en el navegador)
-- Google Fonts (DM Sans + Cormorant Garamond)
-
-Los **502 registros de datos estan embebidos** directamente en el HTML (~358KB de datos JSON inline). El archivo total pesa ~421KB.
-
-### 2. Aplicacion React con Vite (desarrollo)
-
-```bash
-# Instalar dependencias
-npm install
-
-# Servidor de desarrollo con hot-reload
-npm run dev
-
-# Build de produccion
-npm run build
-
-# Preview del build
-npm run preview
-```
-
----
-
-## Generar el HTML autonomo
-
-El archivo `empleo-ia.html` se genera a partir de los fuentes React. Para regenerarlo tras modificar el codigo:
-
-### Proceso de generacion
-
-1. **Reducir el JSON** a los campos necesarios (elimina campos auxiliares como `empleo_pre_bayes`, `census_2021_employed`, etc.):
+### 1. Reducir el JSON a los campos necesarios
 
 ```bash
 python3 -c "
@@ -120,87 +221,102 @@ print(json.dumps(minimal, ensure_ascii=False, separators=(',', ':')))
 " > /tmp/empleo_data.json
 ```
 
-2. **Estructura del HTML**: El archivo sigue este patron:
+### 2. Estructura del HTML
 
 ```
 <!DOCTYPE html>
 <html>
 <head>
-  - Meta tags + titulo
-  - Google Fonts (CDN)
-  - CSS inline (keyframes de animacion)
-  - React 18 + ReactDOM 18 (CDN unpkg)
-  - Babel standalone (CDN unpkg)
+  Meta tags + titulo
+  Google Fonts (CDN)
+  CSS inline (keyframes de animacion)
+  React 18 + ReactDOM 18 (CDN unpkg)
+  Babel standalone (CDN unpkg)
 </head>
 <body>
   <div id="root"></div>
   <script id="occupation-data" type="application/json">
-    [...datos JSON embebidos...]
+    [...datos JSON inline...]
   </script>
   <script type="text/babel">
-    - Constantes y helpers (SCORE_COLORS, EU_LABELS, etc.)
-    - squarify() — algoritmo de treemap
-    - ScoreBadge, OccupationTooltip — componentes
-    - Dashboard — componente principal con todas las vistas
-    - App — carga datos del <script> embebido
-    - ReactDOM.createRoot(...).render(<App />)
+    Constantes y helpers (SCORE_COLORS, EU_LABELS, etc.)
+    squarify() — algoritmo de treemap
+    ScoreBadge, OccupationTooltip — componentes
+    Dashboard — componente principal con las 4 vistas
+    App — carga datos del <script> embebido
+    ReactDOM.createRoot(...).render(<App />)
   </script>
 </body>
 </html>
 ```
 
-3. **Cambios clave respecto a la app React/Vite**:
-   - Se eliminan todas las anotaciones TypeScript (tipos, interfaces, genericos)
-   - Se reemplazan `import` por funciones definidas en el mismo scope
-   - Se cambia `<>...</>` por `<React.Fragment>...</React.Fragment>` (Babel standalone)
-   - Los datos se cargan de `document.getElementById("occupation-data").textContent` en lugar de `fetch()`
-   - No se usa Tailwind CSS — todo el estilado es inline (ya lo era en la app original)
+### 3. Cambios clave vs. la app React/Vite
+
+- Eliminar anotaciones TypeScript (tipos, interfaces, genericos)
+- Reemplazar `import` por funciones en el mismo scope
+- Cambiar `<>...</>` por `<React.Fragment>...</React.Fragment>`
+- Cargar datos de `document.getElementById("occupation-data").textContent` en vez de `fetch()`
+- No se usa Tailwind — todo el estilado ya era inline
+
+</details>
 
 ---
 
-## Stack tecnologico
+## Stack
 
-| Componente | Tecnologia |
-|------------|------------|
-| Framework | React 18 |
-| Build tool | Vite 5 |
-| Lenguaje | TypeScript |
-| Estilos | CSS-in-JS inline + Tailwind CSS (base) |
-| UI Components | shadcn/ui + Radix UI |
-| Visualizacion | SVG nativo (treemaps, scatter plots, histogramas) |
-| Algoritmo treemap | Squarified Treemap (implementacion propia) |
-| Fuentes | DM Sans (UI) + Cormorant Garamond (datos/titulos) |
+| | Tecnologia | Proposito |
+|:--|:-----------|:----------|
+| **Framework** | React 18 | UI reactiva |
+| **Build** | Vite 5 | Dev server + bundling |
+| **Lenguaje** | TypeScript | Tipado estatico |
+| **Visualizacion** | SVG nativo | Treemaps, scatter plots, histogramas |
+| **Treemap** | Squarified (impl. propia) | Layout proporcional al empleo |
+| **Fuentes** | DM Sans + Cormorant Garamond | UI + datos/titulos |
+| **UI base** | shadcn/ui + Radix | Componentes accesibles |
 
 ---
 
-## Estructura del proyecto
+## Estructura
 
 ```
 empleo-ia/
-├── empleo-ia.html                      # HTML autonomo (todo-en-uno)
-├── public/
-│   └── data/
-│       ├── spain_502_FINAL_v7.json     # Dataset principal (502 ocupaciones)
-│       └── ocupaciones_*.json          # Subset de validacion (100 ocup.)
-├── src/
-│   ├── pages/
-│   │   └── Index.tsx                   # Dashboard principal
-│   ├── components/empleo/
-│   │   ├── Badge.tsx                   # ScoreBadge component
-│   │   ├── DetailPanel.tsx             # Panel lateral de detalle
-│   │   └── OccupationTooltip.tsx       # Tooltip hover
-│   └── lib/
-│       ├── occupationData.ts           # Tipos, constantes, helpers
-│       └── treemap.ts                  # Algoritmo squarified treemap
-├── index.html                          # Entry point Vite
-├── package.json
-└── vite.config.ts
+|
+|-- empleo-ia.html                         HTML autonomo (todo en uno, ~421KB)
+|
+|-- public/data/
+|   |-- spain_502_FINAL_v7.json            Dataset principal (502 ocupaciones)
+|   |-- ocupaciones_*_100.json             Subset validacion (100 ocupaciones)
+|   '-- ia-empleo-espana-metodologia-v20.pdf
+|
+|-- src/
+|   |-- pages/Index.tsx                    Dashboard principal (~860 lineas)
+|   |-- components/empleo/
+|   |   |-- Badge.tsx                      Indicador circular de score
+|   |   |-- DetailPanel.tsx                Panel lateral de detalle
+|   |   '-- OccupationTooltip.tsx          Tooltip hover rico
+|   '-- lib/
+|       |-- occupationData.ts              Tipos, constantes, helpers, parsers
+|       '-- treemap.ts                     Algoritmo squarified treemap
+|
+|-- docs/
+|   |-- screenshot-hero.png                Screenshot principal (README)
+|   '-- screenshot-scatter.png             Screenshot scatter (README)
+|
+'-- package.json, vite.config.ts, ...      Config
 ```
 
 ---
 
-## Licencia
+<div align="center">
 
-Los datos y la metodologia estan publicados en Zenodo bajo DOI [10.5281/zenodo.19076797](https://doi.org/10.5281/zenodo.19076797).
+### Fuentes de datos
+
+**INE** (EPA Q4 2025 · Censo 2021 · EES 2023) · **SEPE** (CNO-11) · **Comision Europea** (DESI 2023 · EU AI Act)
+
+---
+
+**Metodologia V20** · Validacion inter-modelo: kappa_w = 0.667
 
 (c) 2026 A. de Nicolas, M. Sureda
+
+</div>
