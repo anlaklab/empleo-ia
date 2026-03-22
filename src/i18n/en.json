@@ -1,0 +1,162 @@
+{
+  "header": {
+    "subtitle": "Labour vulnerability to AI · Spain 2026 · 502 CNO-11 occupations · LFS Q4 2025 · Census 2021",
+    "title": "Job Vulnerability to Artificial Intelligence in Spain",
+    "description": "Analysis of 502 occupations in the Spanish labour market by their degree of AI exposure. Data INE/LFS Q4 2025 · Census 2021 weights · Scores calibrated with 5 Spain-specific structural factors (DESI 2023, labour protection, EU AI Act Annex III, AESIA)."
+  },
+  "stats": {
+    "occupations": "Occupations",
+    "of": "of {{total}}",
+    "employment": "Employment",
+    "workers": "{{count}}M workers",
+    "weightedExposure": "Weighted avg. exposure",
+    "outOf10": "/ 10",
+    "highExposure": "High exposure ≥7",
+    "jobs": "{{count}} jobs",
+    "wageIndex": "Wage bill × exposure index",
+    "wageFormula": "Employment × Salary × (Score/10)"
+  },
+  "disclaimer": {
+    "title": "⚠ Note on employment data:",
+    "text": "The LFS only publishes employment at major group level (1-digit CNO). The 4-digit figures have been proportionally distributed within each 3-digit subgroup, weighted with INE Census 2021 data (145 subgroups). These are not individually observed occupation-level figures.",
+    "italic": "Proportional estimate — not observed at 4-digit level."
+  },
+  "filters": {
+    "searchPlaceholder": "Search occupation…",
+    "allSectors": "All sectors",
+    "exposure": "Exp.",
+    "sortEmployment": "Employment",
+    "sortSalary": "Salary",
+    "sortRisk": "Risk"
+  },
+  "views": {
+    "map": "Map",
+    "detail": "Detail",
+    "chart": "Chart",
+    "list": "List"
+  },
+  "treemap": {
+    "score": "Score",
+    "occupations": "occupations",
+    "jobs": "jobs",
+    "empl": "empl."
+  },
+  "scatter": {
+    "avgSalary": "Average Salary",
+    "iaExposure": "AI Exposure",
+    "trend": "General trend",
+    "bubbleNote": "Bubble size represents the occupation's share of total employment."
+  },
+  "list": {
+    "exposure": "Exposure",
+    "employment": "Employment",
+    "salary": "Salary",
+    "score": "Score",
+    "occupation": "Occupation",
+    "sector": "Sector",
+    "employees": "Employees",
+    "salaryCol": "Salary",
+    "euAiAct": "EU AI Act"
+  },
+  "detail": {
+    "employees": "Employees",
+    "avgSalary": "Average salary",
+    "exposure": "Exposure",
+    "automationVector": "Automation vector",
+    "wageIndex": "Wage bill × exposure index",
+    "formula": "Formula",
+    "weightedIndex": "Weighted index, not wage bill at risk",
+    "reliability": "Reliability:",
+    "reliabilityText": "Score validated inter-model (Gemini vs GPT-4o, n=100 stratified). κ<sub>w</sub> = 0.667 (substantial agreement). MAD = 1.0 point.",
+    "share": "SHARE",
+    "copied": "Copied!",
+    "copy": "Copy",
+    "shareText": "{{name}} (CNO {{cno}}) · AI Exposure: {{score}}/10 · {{employees}} employees · Average salary: {{salary}} · Wage bill × exposure index: {{index}} · Impact type: {{impact}} · EU AI Act: {{risk}}"
+  },
+  "tooltip": {
+    "sector": "Sector",
+    "totalJobs": "Total jobs",
+    "employees": "Employees",
+    "avgSalary": "Average salary",
+    "salary": "Salary",
+    "riskEuAiAct": "EU AI Act Risk:",
+    "impactType": "Impact Type:",
+    "wageIndex": "Wage bill × exposure index",
+    "automVector": "Autom. Vector",
+    "clickToInspect": "Click to inspect {{count}} occupations in this sector"
+  },
+  "sensitivity": {
+    "title": "Sensitivity analysis: ±20% on calibration factors",
+    "description": "The 5 calibration factors are expert judgement without empirical back-testing. This table shows how key figures change when each factor is shifted ±20%. The multiplicative formula compounds the uncertainty.",
+    "scenario": "Scenario",
+    "avgExposure": "Avg. exposure",
+    "highExp": "High exp. (≥7)",
+    "wageIndex": "Wage bill index",
+    "baseCal": "Current calibration (baseline)",
+    "allMinus": "All factors −20% (higher exposure)",
+    "allPlus": "All factors +20% (lower exposure)",
+    "note": "Note: \"High exposure\" figures are not linearly recalculated because they depend on individual thresholds per occupation. The wage bill × exposure index scales proportionally."
+  },
+  "methodology": {
+    "title": "Methodology:",
+    "text1": "502 CNO-11 occupations (INE/SEPE). Employment: LFS Q4 2025 microdata (22.46M employed), distributed using structural weights from the 2021 Population Census (INE, administrative records, 145 subgroups at 3-digit CNO).",
+    "text2": "Salaries: Wage Structure Survey 2023 (INE), adjusted with INE education premia and international proxies (INSEE France, INE-PT Portugal). 128 unique values.",
+    "text3": "AI exposure scores (0-10) calibrated with 5 Spain-specific structural factors: (1) DESI 2023 digitalisation index by sector (69.8 aggregate points, 3rd EU — EC no longer publishes composite DESI post-2023), (2) services sector weight, (3) labour protection (Workers' Statute), (4) AI use-case classification per EU AI Act (Regulation 2024/1689, Annex III — classifies AI systems by use case, not occupations), (5) AESIA supervision (Royal Decree 729/2023).",
+    "wageIndexTitle": "Wage bill × exposure index:",
+    "wageIndexText": "Calculated as Employment × Salary × (Score/10). A weighted index reflecting the concentration of wage bill in high-exposure occupations. It does <em>not</em> represent wage bill \"at risk\" or \"threatened\" — a high score indicates theoretical exposure, not displacement.",
+    "employmentTitle": "Employment data:",
+    "employmentText": "4-digit CNO figures are proportional estimates (LFS→1-digit, redistributed with Census 2021 weights to 3 digits). These are not individually observed figures. The LFS includes ~3.3M self-employed; the Wage Structure Survey excludes them by design.",
+    "internationalTitle": "International comparison:",
+    "internationalText": "The OECD estimates 28% of jobs at risk of automation in Spain, but that figure includes all technologies (robotics, traditional software, AI). The OECD AI-specific figure for Spain is 5.9% high risk (traditional automation) or 27.4% exposure to generative AI (different construct). Our 20.9% measures theoretical AI exposure calibrated with Spain-specific structural factors.",
+    "llmTitle": "LLM scoring and inter-model validation:",
+    "llmText": "Scores were generated with Gemini 2.5 Pro (T=0.2, structured prompts) and validated through blind re-scoring of 100 stratified occupations by GPT-4o. Results: r = 0.715 (good), ICC(2,1) = 0.701 (good), κ<sub>w</sub> = 0.667 (substantial agreement, Landis-Koch). 84% of occupations agree within ±2.0 points. Bland-Altman analysis: mean bias +0.28 points (GPT slightly higher), no proportional bias (±1.96 SD limits: −2.77 to +3.33). Disagreement pattern: GPT compresses toward the centre — values industrial automation (CNO 81xx/82xx) more while Gemini values the digital component of niche professions more.",
+    "fullMethodology": "Full methodology (44 technical notes) →",
+    "noteTitle": "Note:",
+    "noteText": "Scores are theoretical exposure estimates, not predictions of job displacement. Empirical evidence (Anthropic, February 2026) shows that theoretical exposure can differ significantly from actual adoption (94% theoretical vs 33% observed in computing/mathematical occupations). Full methodology with 44 technical notes available in PDF."
+  },
+  "footer": {
+    "credit": "Methodology V23 · Inter-model validation: κw = 0.667 · © 2026 A. de Nicolás, M. Sureda"
+  },
+  "histogram": {
+    "title": "Occupation distribution by exposure level",
+    "filtered": "occupations filtered",
+    "scale": "Scale 0 (minimum) → 10 (maximum)",
+    "methodologyPdf": "Methodology V23 (PDF)",
+    "low": "Low exposure",
+    "high": "High exposure"
+  },
+  "loading": "Loading data...",
+  "error": "Error",
+  "scoreLabels": {
+    "veryLow": "Very low",
+    "low": "Low",
+    "moderate": "Moderate",
+    "high": "High",
+    "veryHigh": "Very high"
+  },
+  "euLabels": {
+    "high-risk": "High risk (Annex III)",
+    "limited": "Limited risk",
+    "minimal": "Minimal risk"
+  },
+  "tipoLabels": {
+    "replace": "Substitution",
+    "hybrid": "Hybrid",
+    "augment": "Augmentation"
+  },
+  "sectors": {
+    "Todos": "All",
+    "Administración": "Administration",
+    "Agricultura": "Agriculture",
+    "Artesanía y manufactura": "Crafts & Manufacturing",
+    "Construcción": "Construction",
+    "Dirección": "Management",
+    "Elementales": "Elementary",
+    "Industria": "Industry",
+    "Industria alimentaria": "Food Industry",
+    "Militar": "Military",
+    "Profesionales": "Professionals",
+    "Servicios": "Services",
+    "Técnicos apoyo": "Support Technicians"
+  }
+}

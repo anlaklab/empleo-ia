@@ -1,0 +1,162 @@
+{
+  "header": {
+    "subtitle": "Vulnerabilidad laboral a la IA · España 2026 · 502 ocupaciones CNO-11 · EPA Q4 2025 · Censo 2021",
+    "title": "Vulnerabilidad de Empleos a la Inteligencia Artificial en España",
+    "description": "Análisis de las 502 ocupaciones del mercado laboral español según su grado de exposición a la IA. Datos INE/EPA Q4 2025 · Ponderaciones Censo 2021 · Puntuaciones calibradas con 5 factores estructurales España (DESI 2023, protección laboral, EU AI Act Anexo III, AESIA)."
+  },
+  "stats": {
+    "occupations": "Ocupaciones",
+    "of": "de {{total}}",
+    "employment": "Empleos",
+    "workers": "{{count}}M trabajadores",
+    "weightedExposure": "Exposición media ponderada",
+    "outOf10": "/ 10",
+    "highExposure": "Alta exposición ≥7",
+    "jobs": "{{count}} empleos",
+    "wageIndex": "Índice masa salarial × exposición",
+    "wageFormula": "Empleo × Salario × (Score/10)"
+  },
+  "disclaimer": {
+    "title": "⚠ Nota sobre datos de empleo:",
+    "text": "La EPA solo publica empleo a nivel de gran grupo (1 dígito CNO). Las cifras a 4 dígitos se han distribuido proporcionalmente dentro de cada subgrupo a 3 dígitos, ponderadas con datos del Censo 2021 del INE (145 subgrupos). No son datos observados por ocupación individual.",
+    "italic": "Estimación proporcional — no dato observado a 4 dígitos."
+  },
+  "filters": {
+    "searchPlaceholder": "Buscar ocupación…",
+    "allSectors": "Todos los sectores",
+    "exposure": "Exp.",
+    "sortEmployment": "Empleo",
+    "sortSalary": "Salario",
+    "sortRisk": "Riesgo"
+  },
+  "views": {
+    "map": "Mapa",
+    "detail": "Detalle",
+    "chart": "Gráfico",
+    "list": "Lista"
+  },
+  "treemap": {
+    "score": "Score",
+    "occupations": "ocupaciones",
+    "jobs": "empleos",
+    "empl": "empl."
+  },
+  "scatter": {
+    "avgSalary": "Salario Medio",
+    "iaExposure": "Exposición IA",
+    "trend": "Tendencia general",
+    "bubbleNote": "El tamaño de la burbuja representa el volumen de empleo de la ocupación respecto al total."
+  },
+  "list": {
+    "exposure": "Exposición",
+    "employment": "Empleo",
+    "salary": "Salario",
+    "score": "Score",
+    "occupation": "Ocupación",
+    "sector": "Sector",
+    "employees": "Empleados",
+    "salaryCol": "Salario",
+    "euAiAct": "EU AI Act"
+  },
+  "detail": {
+    "employees": "Empleados",
+    "avgSalary": "Salario medio",
+    "exposure": "Exposición",
+    "automationVector": "Vector de automatización",
+    "wageIndex": "Índice masa salarial × exposición",
+    "formula": "Fórmula",
+    "weightedIndex": "Índice ponderado, no masa salarial en riesgo",
+    "reliability": "Fiabilidad:",
+    "reliabilityText": "Puntuación validada inter-modelo (Gemini vs GPT-4o, n=100 estratificadas). κ<sub>w</sub> = 0,667 (acuerdo sustancial). MAD = 1,0 punto.",
+    "share": "COMPARTIR",
+    "copied": "Copiado!",
+    "copy": "Copiar",
+    "shareText": "{{name}} (CNO {{cno}}) · Exposición IA: {{score}}/10 · {{employees}} empleados · Salario medio: {{salary}} · Índice masa salarial × exposición: {{index}} · Tipo impacto: {{impact}} · EU AI Act: {{risk}}"
+  },
+  "tooltip": {
+    "sector": "Sector",
+    "totalJobs": "Empleos totales",
+    "employees": "Empleados",
+    "avgSalary": "Salario medio",
+    "salary": "Salario",
+    "riskEuAiAct": "Riesgo EU AI Act:",
+    "impactType": "Tipo Impacto:",
+    "wageIndex": "Índice masa salarial × exposición",
+    "automVector": "Vector Autom.",
+    "clickToInspect": "Click para inspeccionar {{count}} ocupaciones en este sector"
+  },
+  "sensitivity": {
+    "title": "Análisis de sensibilidad: ±20% en factores de calibración",
+    "description": "Los 5 factores de calibración son juicio experto sin back-test empírico. Esta tabla muestra cómo varían las cifras principales al mover cada factor ±20%. La fórmula multiplicativa compone la incertidumbre.",
+    "scenario": "Escenario",
+    "avgExposure": "Exposición media",
+    "highExp": "Alta exp. (≥7)",
+    "wageIndex": "Índice masa sal.",
+    "baseCal": "Calibración actual (base)",
+    "allMinus": "Todos los factores −20% (más exposición)",
+    "allPlus": "Todos los factores +20% (menos exposición)",
+    "note": "Nota: Las cifras de \"Alta exposición\" no se recalculan linealmente porque dependen de umbrales individuales por ocupación. El índice de masa salarial × exposición escala proporcionalmente."
+  },
+  "methodology": {
+    "title": "Metodología:",
+    "text1": "502 ocupaciones CNO-11 (INE/SEPE). Empleo: EPA Q4 2025 microdatos (22,46M ocupados), distribuido mediante ponderaciones estructurales del Censo de Población 2021 (INE, registros administrativos, 145 subgrupos a 3 dígitos CNO).",
+    "text2": "Salarios: Encuesta de Estructura Salarial 2023 (INE), ajustados con primas educativas INE y proxies internacionales (INSEE Francia, INE-PT Portugal). 128 valores únicos.",
+    "text3": "Puntuaciones de exposición IA (0-10) calibradas con 5 factores estructurales España: (1) índice de digitalización DESI 2023 por sector (69,8 puntos agregado, 3.º UE — la CE ya no publica DESI compuesto post-2023), (2) peso del sector servicios, (3) protección laboral (Estatuto de los Trabajadores), (4) clasificación de contextos de uso de IA según EU AI Act (Reglamento 2024/1689, Anexo III — clasifica sistemas de IA por caso de uso, no ocupaciones), (5) supervisión AESIA (Real Decreto 729/2023).",
+    "wageIndexTitle": "Índice masa salarial × exposición:",
+    "wageIndexText": "Se calcula como Empleo × Salario × (Score/10). Es un índice ponderado que refleja la concentración de masa salarial en ocupaciones con alta exposición. <em>No</em> representa la masa salarial \"en riesgo\" ni \"amenazada\" — una puntuación alta indica exposición teórica, no desplazamiento.",
+    "employmentTitle": "Datos de empleo:",
+    "employmentText": "Las cifras a 4 dígitos CNO son estimaciones proporcionales (EPA→1 dígito, redistribuido con ponderaciones Censo 2021 a 3 dígitos). No son datos observados por ocupación individual. La EPA incluye ~3,3M de autónomos; la EES salarial los excluye por diseño.",
+    "internationalTitle": "Comparativa internacional:",
+    "internationalText": "La OCDE estima un 28% de empleos en riesgo de automatización en España, pero esa cifra incluye todas las tecnologías (robótica, software tradicional, IA). La cifra OCDE específica de IA para España es un 5,9% de alto riesgo (automatización tradicional) o 27,4% de exposición a IA generativa (constructo diferente). Nuestro 20,9% mide exposición teórica a IA calibrada con factores estructurales España.",
+    "llmTitle": "Puntuación LLM y validación inter-modelo:",
+    "llmText": "Las puntuaciones se generaron con Gemini 2.5 Pro (T=0,2, prompts estructurados) y se validaron mediante re-puntuación ciega de 100 ocupaciones estratificadas por GPT-4o. Resultados: r = 0,715 (buena), ICC(2,1) = 0,701 (buena), κ<sub>w</sub> = 0,667 (acuerdo sustancial, Landis-Koch). El 84% de las ocupaciones coinciden dentro de ±2,0 puntos. Análisis Bland-Altman: sesgo medio +0,28 puntos (GPT ligeramente superior), sin sesgo proporcional (límites ±1,96 SD: −2,77 a +3,33). Patrón de desacuerdo: GPT comprime hacia el centro — valora más la automatización industrial (CNO 81xx/82xx) mientras Gemini valora más el componente digital de profesiones nicho.",
+    "fullMethodology": "Metodología completa (44 notas técnicas) →",
+    "noteTitle": "Nota:",
+    "noteText": "Las puntuaciones son estimaciones de exposición teórica, no predicciones de desplazamiento laboral. La evidencia empírica (Anthropic, febrero 2026) muestra que la exposición teórica puede diferir significativamente de la adopción real (94% teórico vs 33% observado en ocupaciones informáticas/matemáticas). Metodología completa con 44 notas técnicas disponible en PDF."
+  },
+  "footer": {
+    "credit": "Metodología V23 · Validación inter-modelo: κw = 0,667 · © 2026 A. de Nicolás, M. Sureda"
+  },
+  "histogram": {
+    "title": "Distribución de ocupaciones por nivel de exposición",
+    "filtered": "ocupaciones filtradas",
+    "scale": "Escala 0 (mínima) → 10 (máxima)",
+    "methodologyPdf": "Metodología V23 (PDF)",
+    "low": "Baja exposición",
+    "high": "Alta exposición"
+  },
+  "loading": "Cargando datos...",
+  "error": "Error",
+  "scoreLabels": {
+    "veryLow": "Muy bajo",
+    "low": "Bajo",
+    "moderate": "Moderado",
+    "high": "Alto",
+    "veryHigh": "Muy alto"
+  },
+  "euLabels": {
+    "high-risk": "Alto riesgo (Anexo III)",
+    "limited": "Riesgo limitado",
+    "minimal": "Riesgo mínimo"
+  },
+  "tipoLabels": {
+    "replace": "Sustitución",
+    "hybrid": "Híbrido",
+    "augment": "Aumentación"
+  },
+  "sectors": {
+    "Todos": "Todos",
+    "Administración": "Administración",
+    "Agricultura": "Agricultura",
+    "Artesanía y manufactura": "Artesanía y manufactura",
+    "Construcción": "Construcción",
+    "Dirección": "Dirección",
+    "Elementales": "Elementales",
+    "Industria": "Industria",
+    "Industria alimentaria": "Industria alimentaria",
+    "Militar": "Militar",
+    "Profesionales": "Profesionales",
+    "Servicios": "Servicios",
+    "Técnicos apoyo": "Técnicos apoyo"
+  }
+}

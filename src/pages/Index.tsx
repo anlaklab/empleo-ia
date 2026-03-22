@@ -1,13 +1,16 @@
 import { useState, useMemo, useRef, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { type Occupation, type RawOccupation, parseOccupation, SCORE_COLORS, getScoreColor, getScoreLabel, fmt, fmtE, EU_LABELS, EU_COLORS, TIPO_LABELS } from "@/lib/occupationData";
 import { squarify } from "@/lib/treemap";
 import { ScoreBadge } from "@/components/empleo/Badge";
 import { OccupationTooltip } from "@/components/empleo/OccupationTooltip";
+import { LanguageToggle } from "@/components/empleo/LanguageToggle";
 
 const F = "'DM Sans', sans-serif";
 const S = "'Cormorant Garamond', serif";
 
 function Dashboard({ data }: { data: Occupation[] }) {
+  const { t } = useTranslation();
   const OCCUPATIONS_DATA = data;
   const SECTORS = useMemo(() => [...new Set(OCCUPATIONS_DATA.map(d => d.sector))].sort(), [OCCUPATIONS_DATA]);
 
@@ -49,9 +52,9 @@ function Dashboard({ data }: { data: Occupation[] }) {
     for (const d of filtered) {
       if (!groups[d.sector]) {
         groups[d.sector] = {
-          cno: "S-" + d.sector, name: "Sector " + d.sector, sector: d.sector,
+          cno: "S-" + d.sector, name: d.sector, sector: d.sector,
           empleo: 0, salarioTotal: 0, scoreTotal: 0, ocupaciones: 0,
-          vector: "Agregado sectorial (click para ver detalle)",
+          vector: "",
           euRisk: "minimal", tipo: "hybrid", isSectorGroup: true, salario: 0, score: 0
         };
       }
@@ -140,10 +143,10 @@ function Dashboard({ data }: { data: Occupation[] }) {
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
           <div>
             <div style={{ fontSize: 13, fontWeight: 700, color: "#1a1a1a", fontFamily: S, letterSpacing: "-0.2px" }}>
-              Distribución de ocupaciones por nivel de exposición
+              {t("histogram.title", "Distribución de ocupaciones por nivel de exposición")}
             </div>
             <div style={{ fontSize: 11, color: "#999", marginTop: 2 }}>
-              {filtered.length} ocupaciones filtradas · Escala 0 (mínima) → 10 (máxima)
+              {filtered.length} {t("histogram.filtered", "ocupaciones filtradas")} · {t("histogram.scale", "Escala 0 (mínima) → 10 (máxima)")}
             </div>
           </div>
           <a href="https://doi.org/10.5281/zenodo.19076797" target="_blank" rel="noopener noreferrer"
@@ -163,7 +166,7 @@ function Dashboard({ data }: { data: Occupation[] }) {
               <polyline points="15 3 21 3 21 9"/>
               <line x1="10" y1="14" x2="21" y2="3"/>
             </svg>
-            Metodología V20 (PDF)
+            {t("histogram.methodologyPdf", "Metodología V20 (PDF)")}
           </a>
         </div>
         <div style={{ display: "flex", alignItems: "flex-end", gap: 8, justifyContent: "center", height: 100 }}>
@@ -184,8 +187,8 @@ function Dashboard({ data }: { data: Occupation[] }) {
           })}
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", marginTop: 8, fontSize: 10, color: "#999", textTransform: "uppercase", letterSpacing: "0.5px" }}>
-          <span>← Baja exposición</span>
-          <span>Alta exposición →</span>
+          <span>← {t("histogram.low", "Baja exposición")}</span>
+          <span>{t("histogram.high", "Alta exposición")} →</span>
         </div>
       </div>
     );
@@ -196,8 +199,13 @@ function Dashboard({ data }: { data: Occupation[] }) {
     const wage = selected.empleo * selected.salario * (selected.score / 10);
     const shareUrl = typeof window !== "undefined" ? window.location.href : "";
     const empText = selected.empleo >= 1e6 ? (selected.empleo / 1e6).toFixed(1) + "M" : selected.empleo >= 1e3 ? (selected.empleo / 1e3).toFixed(0) + "K" : fmt(selected.empleo);
-    const shareText = `${selected.name}: exposición a la IA ${selected.score.toFixed(1)}/10 (${getScoreLabel(selected.score)}). ${empText} empleados en España con salario medio de ${fmtE(selected.salario)}. Consulta el análisis completo en ${shareUrl}`;
-    const shareSubject = `${selected.name} — Exposición IA ${selected.score.toFixed(1)}/10`;
+    const shareText = t("detail.shareText", {
+      name: selected.name, cno: selected.cno, score: selected.score.toFixed(1),
+      employees: empText, salary: fmtE(selected.salario),
+      index: wage >= 1e9 ? (wage / 1e9).toFixed(1) + "B \u20AC" : (wage / 1e6).toFixed(0) + "M \u20AC",
+      impact: TIPO_LABELS[selected.tipo], risk: EU_LABELS[selected.euRisk],
+    }) + ` ${shareUrl}`;
+    const shareSubject = `${selected.name} \u2014 ${t("detail.exposure")} ${selected.score.toFixed(1)}/10`;
 
     return (
       <div style={{
@@ -231,7 +239,7 @@ function Dashboard({ data }: { data: Occupation[] }) {
           <ScoreBadge score={selected.score} size="lg" />
           <div>
             <div style={{ fontSize: 15, fontWeight: 600, color: getScoreColor(selected.score) }}>
-              Exposición {getScoreLabel(selected.score)}
+              {t("detail.exposure")} {getScoreLabel(selected.score)}
             </div>
             <div style={{ fontSize: 12, color: "#888" }}>{selected.score.toFixed(1)} / 10</div>
           </div>
@@ -240,17 +248,17 @@ function Dashboard({ data }: { data: Occupation[] }) {
         {/* Stats grid */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 10, marginBottom: 20 }}>
           <div style={{ padding: 14, background: "#f0ece4", borderRadius: 6 }}>
-            <div style={{ fontSize: 9, textTransform: "uppercase", letterSpacing: "1px", color: "#999", marginBottom: 3 }}>Empleados</div>
+            <div style={{ fontSize: 9, textTransform: "uppercase", letterSpacing: "1px", color: "#999", marginBottom: 3 }}>{t("detail.employees")}</div>
             <div style={{ fontSize: 20, fontWeight: 700, color: "#1a1a1a", fontFamily: S }}>
               {selected.empleo >= 1e6 ? (selected.empleo / 1e6).toFixed(1) + "M" : selected.empleo >= 1e3 ? Math.round(selected.empleo / 1e3) + "K" : fmt(selected.empleo)}
             </div>
           </div>
           <div style={{ padding: 14, background: "#f0ece4", borderRadius: 6 }}>
-            <div style={{ fontSize: 9, textTransform: "uppercase", letterSpacing: "1px", color: "#999", marginBottom: 3 }}>Salario medio</div>
+            <div style={{ fontSize: 9, textTransform: "uppercase", letterSpacing: "1px", color: "#999", marginBottom: 3 }}>{t("detail.avgSalary")}</div>
             <div style={{ fontSize: 20, fontWeight: 700, color: "#1a1a1a", fontFamily: S }}>{fmtE(selected.salario)}</div>
           </div>
           <div style={{ padding: 14, background: "#f0ece4", borderRadius: 6 }}>
-            <div style={{ fontSize: 9, textTransform: "uppercase", letterSpacing: "1px", color: "#999", marginBottom: 3 }}>Índice masa salarial × exp.</div>
+            <div style={{ fontSize: 9, textTransform: "uppercase", letterSpacing: "1px", color: "#999", marginBottom: 3 }}>{t("detail.wageIndex")}</div>
             <div style={{ fontSize: 20, fontWeight: 700, color: "#c8633a", fontFamily: S }}>
               {wage >= 1e9 ? (wage / 1e9).toFixed(1) + "B €" : (wage / 1e6).toFixed(0) + "M €"}
             </div>
@@ -259,7 +267,7 @@ function Dashboard({ data }: { data: Occupation[] }) {
 
         {/* Automation vector */}
         <div style={{ marginBottom: 16 }}>
-          <div style={{ fontSize: 9, textTransform: "uppercase", letterSpacing: "1px", color: "#999", marginBottom: 6 }}>Vector de automatización</div>
+          <div style={{ fontSize: 9, textTransform: "uppercase", letterSpacing: "1px", color: "#999", marginBottom: 6 }}>{t("detail.automationVector")}</div>
           <div style={{
             fontSize: 13, color: "#444", lineHeight: 1.5, padding: 10,
             background: "#f0ece4", borderRadius: 5, borderLeft: `3px solid ${getScoreColor(selected.score)}`
@@ -280,13 +288,13 @@ function Dashboard({ data }: { data: Occupation[] }) {
           <span style={{
             marginLeft: "auto", fontSize: 10, color: "#888", lineHeight: 1.5, textAlign: "right",
           }}>
-            Validación inter-modelo: κ<sub>w</sub> = 0,667 · MAD = 1,0
+            {t("detail.reliability")} κ<sub>w</sub> = 0,667 · MAD = 1,0
           </span>
         </div>
 
         {/* Social sharing */}
         <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
-          <span style={{ fontSize: 10, textTransform: "uppercase", letterSpacing: "1px", color: "#999", fontWeight: 600 }}>COMPARTIR</span>
+          <span style={{ fontSize: 10, textTransform: "uppercase", letterSpacing: "1px", color: "#999", fontWeight: 600 }}>{t("detail.share")}</span>
           {/* X/Twitter */}
           <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`} target="_blank" rel="noopener noreferrer" style={{
             display: "inline-flex", alignItems: "center", gap: 5, padding: "5px 12px", borderRadius: 20,
@@ -331,7 +339,7 @@ function Dashboard({ data }: { data: Occupation[] }) {
             border: "1px solid #d8d4cc",
           }}>
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-            {copied ? "Copiado!" : "Copiar"}
+            {copied ? t("detail.copied") : t("detail.copy")}
           </button>
         </div>
       </div>
@@ -342,28 +350,30 @@ function Dashboard({ data }: { data: Occupation[] }) {
     <div onMouseMove={(e) => setMousePos({ x: e.clientX, y: e.clientY })} style={{ background: "#faf8f4", color: "#1a1a1a", minHeight: "100vh", fontFamily: F }}>
 
       <div style={{ padding: "28px 24px 0", maxWidth: 1200, margin: "0 auto" }}>
-        <div style={{ fontSize: 10, textTransform: "uppercase", letterSpacing: "2.5px", color: "#bbb", marginBottom: 6 }}>
-          Vulnerabilidad laboral a la IA · España 2026 · 502 ocupaciones CNO-11 · EPA Q4 2025 · Censo 2021
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+          <div style={{ fontSize: 10, textTransform: "uppercase", letterSpacing: "2.5px", color: "#bbb", marginBottom: 6 }}>
+            {t("header.subtitle")}
+          </div>
+          <LanguageToggle />
         </div>
         <h1 style={{
           fontSize: "clamp(26px, 3.5vw, 44px)", fontFamily: S, fontWeight: 600,
           margin: "0 0 4px", lineHeight: 1.08, color: "#1a1a1a"
         }}>
-          Vulnerabilidad de Empleos a la Inteligencia Artificial en España
+          {t("header.title")}
         </h1>
         <p style={{ fontSize: 14, color: "#888", lineHeight: 1.55, margin: "0 0 20px" }}>
-          Análisis de las 502 ocupaciones del mercado laboral español según su grado de exposición a la IA.
-          Datos INE/EPA Q4 2025 · Ponderaciones Censo 2021 · Puntuaciones calibradas con 5 factores estructurales España (DESI 2023, protección laboral, EU AI Act Anexo III, AESIA).
+          {t("header.description")}
         </p>
 
         {/* Stats ribbon */}
         <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 12 }}>
           {[
-            ["Ocupaciones", filtered.length, `de ${OCCUPATIONS_DATA.length}`],
-            ["Empleos", fmt(stats.te), `${(stats.te / 1e6).toFixed(1)}M trabajadores`],
-            ["Exposición media ponderada", stats.ws.toFixed(1) + " / 10", getScoreLabel(stats.ws)],
-            ["Alta exposición ≥7", `${stats.hp.toFixed(1)}%`, `${fmt(stats.he)} empleos`],
-            ["Índice masa salarial × exposición", `${(stats.tw / 1e9).toFixed(1)}B €`, "Empleo × Salario × (Score/10)"],
+            [t("stats.occupations"), filtered.length, t("stats.of", { total: OCCUPATIONS_DATA.length })],
+            [t("stats.employment"), fmt(stats.te), t("stats.workers", { count: (stats.te / 1e6).toFixed(1) })],
+            [t("stats.weightedExposure"), stats.ws.toFixed(1) + " / 10", getScoreLabel(stats.ws)],
+            [t("stats.highExposure"), `${stats.hp.toFixed(1)}%`, t("stats.jobs", { count: fmt(stats.he) })],
+            [t("stats.wageIndex"), `${(stats.tw / 1e9).toFixed(1)}B \u20AC`, t("stats.wageFormula")],
 
           ].map(([l, v, s]) => (
             <div key={l as string} style={{
@@ -379,7 +389,7 @@ function Dashboard({ data }: { data: Occupation[] }) {
 
         {/* Employment disclaimer */}
         <div style={{ fontSize: 10, color: "#b08050", background: "#fdf6ee", border: "1px solid #f0dcc0", borderRadius: 5, padding: "8px 12px", marginBottom: 20, lineHeight: 1.5 }}>
-          <strong>⚠ Nota sobre datos de empleo:</strong> La EPA solo publica empleo a nivel de gran grupo (1 dígito CNO). Las cifras a 4 dígitos se han distribuido proporcionalmente dentro de cada subgrupo a 3 dígitos, ponderadas con datos del Censo 2021 del INE (145 subgrupos). No son datos observados por ocupación individual. <em>Estimación proporcional — no dato observado a 4 dígitos.</em>
+          <strong>{t("disclaimer.title")}</strong> {t("disclaimer.text")} <em>{t("disclaimer.italic")}</em>
         </div>
 
         {/* Compact Filters Bar */}
@@ -392,7 +402,7 @@ function Dashboard({ data }: { data: Occupation[] }) {
             <span style={{ position: "absolute", left: 8, top: "50%", transform: "translateY(-50%)", fontSize: 13, pointerEvents: "none", color: "#aaa" }}>🔍</span>
             <input
               type="text" value={search} onChange={e => setSearch(e.target.value)}
-              placeholder="Buscar ocupación…"
+              placeholder={t("filters.searchPlaceholder")}
               style={{
                 width: "100%", background: "#f0ece4", border: "1px solid #e0dcd4", color: "#444",
                 borderRadius: 5, padding: "6px 28px 6px 28px", fontSize: 12, fontFamily: F, outline: "none",
@@ -415,8 +425,8 @@ function Dashboard({ data }: { data: Occupation[] }) {
               background: "#f0ece4", border: "1px solid #e0dcd4", color: "#444", borderRadius: 5,
               padding: "6px 8px", fontSize: 11, fontFamily: F, cursor: "pointer", outline: "none", maxWidth: 140,
             }}>
-              <option value="Todos">Todos los sectores</option>
-              {SECTORS.map(s => <option key={s} value={s}>{s}</option>)}
+              <option value="Todos">{t("filters.allSectors")}</option>
+              {SECTORS.map(s => <option key={s} value={s}>{t(`sectors.${s}`, s)}</option>)}
             </select>
             {sector !== "Todos" && (
               <button onClick={() => setSector("Todos")} style={{
@@ -430,7 +440,7 @@ function Dashboard({ data }: { data: Occupation[] }) {
 
           {/* Range */}
           <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
-            <span style={{ fontSize: 10, textTransform: "uppercase", letterSpacing: "0.5px", color: "#aaa", fontWeight: 600 }}>Exp.</span>
+            <span style={{ fontSize: 10, textTransform: "uppercase", letterSpacing: "0.5px", color: "#aaa", fontWeight: 600 }}>{t("filters.exposure")}</span>
             <input type="range" min={0} max={10} step={1} value={range[0]}
               onChange={e => setRange([+e.target.value, range[1]])}
               style={{ width: 50, accentColor: "#c8633a" }} />
@@ -445,9 +455,9 @@ function Dashboard({ data }: { data: Occupation[] }) {
             background: "#f0ece4", border: "1px solid #e0dcd4", color: "#444", borderRadius: 5,
             padding: "6px 8px", fontSize: 11, fontFamily: F, cursor: "pointer", outline: "none",
           }}>
-            <option value="empleo">Empleo</option>
-            <option value="salario">Salario</option>
-            <option value="score">Riesgo</option>
+            <option value="empleo">{t("filters.sortEmployment")}</option>
+            <option value="salario">{t("filters.sortSalary")}</option>
+            <option value="score">{t("filters.sortRisk")}</option>
           </select>
 
           {/* View buttons */}
@@ -465,7 +475,7 @@ function Dashboard({ data }: { data: Occupation[] }) {
                 borderRadius: 5, cursor: "pointer", textTransform: "uppercase", letterSpacing: "0.5px",
                 transition: "all 0.15s ease"
               }}>
-                {m === "treemap" ? "Mapa" : m === "detailedMap" ? "Detalle" : m === "scatter" ? "Gráfico" : "Lista"}
+                {m === "treemap" ? t("views.map") : m === "detailedMap" ? t("views.detail") : m === "scatter" ? t("views.chart") : t("views.list")}
               </button>
             ))}
           </div>
@@ -525,7 +535,7 @@ function Dashboard({ data }: { data: Occupation[] }) {
                             fontWeight: r.isSectorGroup ? 700 : 600,
                             lineHeight: 1.1, marginBottom: 4, letterSpacing: r.isSectorGroup ? "-0.5px" : "0",
                           }}>
-                            {r.isSectorGroup ? r.name.replace("Sector ", "") : r.name}
+                            {r.name}
                           </div>
                           {(r.h || 0) > 65 && r.isSectorGroup ? (
                             <div style={{ display: "flex", flexDirection: "column", gap: 6, marginTop: "auto" }}>
@@ -538,10 +548,10 @@ function Dashboard({ data }: { data: Occupation[] }) {
                                 }}>
                                   Score: {r.score.toFixed(1)} / 10
                                 </div>
-                                <span style={{ fontSize: 13, fontWeight: 500, opacity: 0.9 }}>{r.ocupaciones} ocupaciones</span>
+                                <span style={{ fontSize: 13, fontWeight: 500, opacity: 0.9 }}>{r.ocupaciones} {t("treemap.occupations")}</span>
                               </div>
                               <div style={{ fontSize: 14, opacity: 0.95 }}>
-                                <strong style={{ fontSize: 16 }}>{fmt(r.empleo)}</strong> empleos
+                                <strong style={{ fontSize: 16 }}>{fmt(r.empleo)}</strong> {t("treemap.jobs")}
                               </div>
                             </div>
                           ) : (r.h || 0) > 38 && !r.isSectorGroup ? (
@@ -553,7 +563,7 @@ function Dashboard({ data }: { data: Occupation[] }) {
                               }}>
                                 Score: {r.score.toFixed(1)}
                               </div>
-                              <div style={{ fontSize: 9, opacity: 0.8, fontWeight: 400 }}>{fmt(r.empleo)} empl.</div>
+                              <div style={{ fontSize: 9, opacity: 0.8, fontWeight: 400 }}>{fmt(r.empleo)} {t("treemap.empl")}</div>
                             </div>
                           ) : null}
                         </div>
@@ -662,10 +672,10 @@ function Dashboard({ data }: { data: Occupation[] }) {
               padding: "20px 20px 40px 60px", position: "relative"
             }}>
               <div style={{ position: "absolute", top: 15, left: 15, fontSize: 11, color: "#888", textTransform: "uppercase", letterSpacing: "1px", fontWeight: 600 }}>
-                Salario Medio
+                {t("scatter.avgSalary")}
               </div>
               <div style={{ position: "absolute", bottom: 10, right: 20, fontSize: 11, color: "#888", textTransform: "uppercase", letterSpacing: "1px", fontWeight: 600 }}>
-                Exposición IA
+                {t("scatter.iaExposure")}
               </div>
               <svg width="100%" height={plotHeight} style={{ overflow: "visible" }}>
                 {[0, 20000, 30000, 40000, 50000, 60000].map(w => {
@@ -692,7 +702,7 @@ function Dashboard({ data }: { data: Occupation[] }) {
                     <line x1="0%" y1={getYForScore(0)} x2="100%" y2={getYForScore(10)}
                       stroke="#1a1a1a" strokeWidth="2" strokeDasharray="6 6" opacity="0.4" />
                     <text x="98%" y={getYForScore(10) - 10} fontSize="11" fill="#1a1a1a" opacity="0.6" textAnchor="end" fontWeight="500">
-                      Tendencia general
+                      {t("scatter.trend")}
                     </text>
                   </g>
                 )}
@@ -722,7 +732,7 @@ function Dashboard({ data }: { data: Occupation[] }) {
               {hovered && <OccupationTooltip item={hovered} mousePos={mousePos} />}
             </div>
             <div style={{ display: "flex", justifyContent: "center", marginTop: 12 }}>
-              <span style={{ fontSize: 10, color: "#888" }}>El tamaño de la burbuja representa el volumen de empleo de la ocupación respecto al total.</span>
+              <span style={{ fontSize: 10, color: "#888" }}>{t("scatter.bubbleNote")}</span>
             </div>
           </div>
         );
@@ -732,7 +742,7 @@ function Dashboard({ data }: { data: Occupation[] }) {
       {!selected && view === "list" && (
         <div style={{ padding: "0 24px 32px", maxWidth: 1200, margin: "0 auto" }}>
           <div style={{ display: "flex", gap: 6, marginBottom: 10 }}>
-            {[{ k: "score", l: "Exposición" }, { k: "empleo", l: "Empleo" }, { k: "salario", l: "Salario" }].map(s => (
+            {[{ k: "score", l: t("list.exposure") }, { k: "empleo", l: t("list.employment") }, { k: "salario", l: t("list.salary") }].map(s => (
               <button key={s.k} onClick={() => setSortBy(s.k)} style={{
                 padding: "4px 12px", fontSize: 10, fontFamily: F, fontWeight: 600,
                 background: sortBy === s.k ? "#1a1a1a" : "transparent",
@@ -750,10 +760,10 @@ function Dashboard({ data }: { data: Occupation[] }) {
               gap: 6, padding: "6px 10px", fontSize: 9, textTransform: "uppercase",
               letterSpacing: "1px", color: "#bbb", fontWeight: 600, borderBottom: "1px solid #e8e4dc"
             }}>
-              <div>Score</div><div>Ocupación</div><div>Sector</div>
-              <div style={{ textAlign: "right" }}>Empleados</div>
-              <div style={{ textAlign: "right" }}>Salario</div>
-              <div style={{ textAlign: "right" }}>EU AI Act</div>
+              <div>{t("list.score")}</div><div>{t("list.occupation")}</div><div>{t("list.sector")}</div>
+              <div style={{ textAlign: "right" }}>{t("list.employees")}</div>
+              <div style={{ textAlign: "right" }}>{t("list.salaryCol")}</div>
+              <div style={{ textAlign: "right" }}>{t("list.euAiAct")}</div>
             </div>
             {sorted.map((item, i) => (
               <div key={item.cno} style={{
@@ -792,26 +802,26 @@ function Dashboard({ data }: { data: Occupation[] }) {
       <div style={{ padding: "16px 24px 0", maxWidth: 1200, margin: "0 auto", borderTop: "1px solid #e8e4dc" }}>
         <details style={{ marginBottom: 16 }}>
           <summary style={{ fontSize: 12, fontWeight: 600, color: "#666", cursor: "pointer", marginBottom: 8 }}>
-            Análisis de sensibilidad: ±20% en factores de calibración
+            {t("sensitivity.title")}
           </summary>
           <div style={{ fontSize: 10, color: "#888", marginBottom: 8, lineHeight: 1.5 }}>
-            Los 5 factores de calibración son juicio experto sin back-test empírico. Esta tabla muestra cómo varían las cifras principales al mover cada factor ±20%. La fórmula multiplicativa compone la incertidumbre.
+            {t("sensitivity.description")}
           </div>
           <div style={{ overflowX: "auto" }}>
             <table style={{ fontSize: 10, borderCollapse: "collapse", width: "100%", maxWidth: 700 }}>
               <thead>
                 <tr style={{ borderBottom: "2px solid #e0dcd4" }}>
-                  <th style={{ padding: "6px 10px", textAlign: "left", color: "#999", fontWeight: 600 }}>Escenario</th>
-                  <th style={{ padding: "6px 10px", textAlign: "right", color: "#999", fontWeight: 600 }}>Exposición media</th>
-                  <th style={{ padding: "6px 10px", textAlign: "right", color: "#999", fontWeight: 600 }}>Alta exp. (≥7)</th>
-                  <th style={{ padding: "6px 10px", textAlign: "right", color: "#999", fontWeight: 600 }}>Índice masa sal.</th>
+                  <th style={{ padding: "6px 10px", textAlign: "left", color: "#999", fontWeight: 600 }}>{t("sensitivity.scenario")}</th>
+                  <th style={{ padding: "6px 10px", textAlign: "right", color: "#999", fontWeight: 600 }}>{t("sensitivity.avgExposure")}</th>
+                  <th style={{ padding: "6px 10px", textAlign: "right", color: "#999", fontWeight: 600 }}>{t("sensitivity.highExp")}</th>
+                  <th style={{ padding: "6px 10px", textAlign: "right", color: "#999", fontWeight: 600 }}>{t("sensitivity.wageIndex")}</th>
                 </tr>
               </thead>
               <tbody>
                 {[
-                  ["Calibración actual (base)", stats.ws, stats.hp, stats.tw],
-                  ["Todos los factores −20% (más exposición)", stats.ws * 1.20, null, stats.tw * 1.20],
-                  ["Todos los factores +20% (menos exposición)", stats.ws * 0.80, null, stats.tw * 0.80],
+                  [t("sensitivity.baseCal"), stats.ws, stats.hp, stats.tw],
+                  [t("sensitivity.allMinus"), stats.ws * 1.20, null, stats.tw * 1.20],
+                  [t("sensitivity.allPlus"), stats.ws * 0.80, null, stats.tw * 0.80],
                 ].map(([label, avg, pct, tw], i) => (
                   <tr key={i} style={{ borderBottom: "1px solid #f0ece4", background: i === 0 ? "#f9f6f0" : "transparent" }}>
                     <td style={{ padding: "6px 10px", color: i === 0 ? "#1a1a1a" : "#666", fontWeight: i === 0 ? 600 : 400 }}>{label as string}</td>
@@ -824,7 +834,7 @@ function Dashboard({ data }: { data: Occupation[] }) {
             </table>
           </div>
           <div style={{ fontSize: 9, color: "#bbb", marginTop: 6, fontStyle: "italic" }}>
-            Nota: Las cifras de "Alta exposición" no se recalculan linealmente porque dependen de umbrales individuales por ocupación. El índice de masa salarial × exposición escala proporcionalmente.
+            {t("sensitivity.note")}
           </div>
         </details>
       </div>
@@ -832,28 +842,23 @@ function Dashboard({ data }: { data: Occupation[] }) {
       {/* FOOTER */}
       <div style={{ padding: "0 24px 28px", maxWidth: 1200, margin: "0 auto" }}>
         <div style={{ fontSize: 10, color: "#bbb", lineHeight: 1.65 }}>
-          <strong style={{ color: "#999" }}>Metodología:</strong> 502 ocupaciones CNO-11 (INE/SEPE). Empleo: EPA Q4 2025 microdatos (22,46M ocupados), distribuido mediante ponderaciones estructurales del Censo de Población 2021 (INE, registros administrativos, 145 subgrupos a 3 dígitos CNO).
-          Salarios: Encuesta de Estructura Salarial 2023 (INE), ajustados con primas educativas INE y proxies internacionales (INSEE Francia, INE-PT Portugal). 128 valores únicos.
-          Puntuaciones de exposición IA (0-10) calibradas con 5 factores estructurales España:
-          (1) índice de digitalización DESI 2023 por sector (69,8 puntos agregado, 3.º UE — la CE ya no publica DESI compuesto post-2023), (2) peso del sector servicios, (3) protección laboral (Estatuto de los Trabajadores),
-          (4) clasificación de contextos de uso de IA según EU AI Act (Reglamento 2024/1689, Anexo III — clasifica sistemas de IA por caso de uso, no ocupaciones), (5) supervisión AESIA (Real Decreto 729/2023).
+          <strong style={{ color: "#999" }}>{t("methodology.title")}</strong> {t("methodology.text1")} {t("methodology.text2")} {t("methodology.text3")}
           <br />
-          <strong style={{ color: "#999" }}>Índice masa salarial × exposición:</strong> Se calcula como Empleo × Salario × (Score/10). Es un índice ponderado que refleja la concentración de masa salarial en ocupaciones con alta exposición. <em>No</em> representa la masa salarial "en riesgo" ni "amenazada" — una puntuación alta indica exposición teórica, no desplazamiento.
+          <strong style={{ color: "#999" }}>{t("methodology.wageIndexTitle")}</strong> <span dangerouslySetInnerHTML={{ __html: t("methodology.wageIndexText") }} />
           <br />
-          <strong style={{ color: "#999" }}>Datos de empleo:</strong> Las cifras a 4 dígitos CNO son estimaciones proporcionales (EPA→1 dígito, redistribuido con ponderaciones Censo 2021 a 3 dígitos). No son datos observados por ocupación individual. La EPA incluye ~3,3M de autónomos; la EES salarial los excluye por diseño.
+          <strong style={{ color: "#999" }}>{t("methodology.employmentTitle")}</strong> {t("methodology.employmentText")}
           <br />
-          <strong style={{ color: "#999" }}>Comparativa internacional:</strong> La OCDE estima un 28% de empleos en riesgo de automatización en España, pero esa cifra incluye todas las tecnologías (robótica, software tradicional, IA). La cifra OCDE específica de IA para España es un 5,9% de alto riesgo (automatización tradicional) o 27,4% de exposición a IA generativa (constructo diferente). Nuestro 20,9% mide exposición teórica a IA calibrada con factores estructurales España.
+          <strong style={{ color: "#999" }}>{t("methodology.internationalTitle")}</strong> {t("methodology.internationalText")}
           <br />
-          <strong style={{ color: "#999" }}>Puntuación LLM y validación inter-modelo:</strong> Las puntuaciones se generaron con Gemini 2.5 Pro (T=0,2, prompts estructurados) y se validaron mediante re-puntuación ciega de 100 ocupaciones estratificadas por GPT-4o. Resultados: r = 0,715 (buena), ICC(2,1) = 0,701 (buena), κ<sub>w</sub> = 0,667 (acuerdo sustancial, Landis-Koch). El 84% de las ocupaciones coinciden dentro de ±2,0 puntos. Análisis Bland-Altman: sesgo medio +0,28 puntos (GPT ligeramente superior), sin sesgo proporcional (límites ±1,96 SD: −2,77 a +3,33). Patrón de desacuerdo: GPT comprime hacia el centro — valora más la automatización industrial (CNO 81xx/82xx) mientras Gemini valora más el componente digital de profesiones nicho. <a href="https://doi.org/10.5281/zenodo.19076797" target="_blank" rel="noopener noreferrer" style={{ color: "#c8633a", textDecoration: "underline" }}>Metodología completa (44 notas técnicas) →</a>
+          <strong style={{ color: "#999" }}>{t("methodology.llmTitle")}</strong> <span dangerouslySetInnerHTML={{ __html: t("methodology.llmText") }} /> <a href="https://doi.org/10.5281/zenodo.19076797" target="_blank" rel="noopener noreferrer" style={{ color: "#c8633a", textDecoration: "underline" }}>{t("methodology.fullMethodology")}</a>
           <br />
-          <strong style={{ color: "#999" }}>Nota:</strong> Las puntuaciones son estimaciones de exposición teórica, no predicciones de desplazamiento laboral. La evidencia empírica (Anthropic, febrero 2026) muestra que la exposición teórica puede diferir significativamente de la adopción real (94% teórico vs 33% observado en ocupaciones informáticas/matemáticas).
-          Metodología completa con 44 notas técnicas disponible en PDF.
+          <strong style={{ color: "#999" }}>{t("methodology.noteTitle")}</strong> {t("methodology.noteText")}
         </div>
       </div>
 
       {/* Footer credit */}
       <div style={{ textAlign: "center", padding: "12px 16px 18px", fontFamily: "system-ui,-apple-system,sans-serif", fontSize: 11, color: "#94a3b8", letterSpacing: "0.02em" }}>
-        Metodología V20 · Validación inter-modelo: κw = 0,667 · © 2026 A. de Nicolás, M. Sureda
+        {t("footer.credit")}
       </div>
     </div>
   );
@@ -861,17 +866,21 @@ function Dashboard({ data }: { data: Occupation[] }) {
 
 // ─── LOADER ─────────────────────────────────────────────────────────────────
 export default function Index() {
+  const { t, i18n } = useTranslation();
   const [data, setData] = useState<Occupation[] | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const lang = i18n.language;
 
   useEffect(() => {
-    fetch("/data/spain_502_FINAL_v7.json")
+    setData(null);
+    const file = lang === "en" ? "/data/spain_502_v10_final_en.json" : "/data/spain_502_v10_final.json";
+    fetch(file)
       .then(r => { if (!r.ok) throw new Error("Failed to load data"); return r.json(); })
       .then((raw: RawOccupation[]) => setData(raw.map(parseOccupation)))
       .catch(e => setError(e.message));
-  }, []);
+  }, [lang]);
 
-  if (error) return <div style={{ padding: 40, textAlign: "center", color: "#c8633a" }}>Error: {error}</div>;
-  if (!data) return <div style={{ padding: 40, textAlign: "center", color: "#888" }}>Cargando datos...</div>;
+  if (error) return <div style={{ padding: 40, textAlign: "center", color: "#c8633a" }}>{t("error")}: {error}</div>;
+  if (!data) return <div style={{ padding: 40, textAlign: "center", color: "#888" }}>{t("loading")}</div>;
   return <Dashboard data={data} />;
 }
