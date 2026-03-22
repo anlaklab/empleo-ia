@@ -262,6 +262,7 @@ function Dashboard({ data }: { data: Occupation[] }) {
             <div style={{ fontSize: 20, fontWeight: 700, color: "#c8633a", fontFamily: S }}>
               {wage >= 1e9 ? (wage / 1e9).toFixed(1) + "B €" : (wage / 1e6).toFixed(0) + "M €"}
             </div>
+            <div style={{ fontSize: 11, color: "#999", marginTop: 2 }}>{t("stats.wageFormula")}</div>
           </div>
         </div>
 
