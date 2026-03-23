@@ -77,7 +77,7 @@
     "p3": "El umbral ≥7 para 'alta vulnerabilidad' es orientativo. La banda de sensibilidad es 11,7%–15,2% según variaciones de ±20% en los factores de calibración.",
     "p4": "Los datos de empleo a 4 dígitos son estimaciones (cascada 4 capas). Los 5 ocupaciones del grupo CNO 59 (policías, guardias civiles, prisiones) usan datos administrativos oficiales.",
     "p5": "EU AI Act clasifica sistemas de IA por caso de uso (Anexo III), no ocupaciones. 'Alto riesgo' indica que sistemas de IA en ese contexto están sujetos a requisitos estrictos, no que el trabajo esté en riesgo.",
-    "p6": "Para tomar decisiones laborales o de política pública, consulte la metodología completa (56 notas técnicas) disponible en Zenodo."
+    "p6": "Para tomar decisiones laborales o de política pública, consulte la metodología completa (57 notas técnicas) disponible en Zenodo."
   },
   "detail": {
     "employees": "Empleados",
@@ -147,10 +147,10 @@
     "internationalTitle": "Comparativa internacional:",
     "internationalText": "La OCDE estima un 28% de empleos en riesgo de automatización en España, pero esa cifra incluye todas las tecnologías (robótica, software tradicional, IA). La cifra OCDE específica de IA para España es un 5,9% de alto riesgo (automatización tradicional) o 27,4% de exposición a IA generativa (constructo diferente). Nuestro 12,1% mide vulnerabilidad teórica a IA calibrada con factores estructurales España (47 ocupaciones, 22,73M empleados).",
     "llmTitle": "Puntuación LLM y validación inter-modelo:",
-    "llmText": "Puntuaciones generadas con Gemini 2.5 Pro (T=0,2) y validadas con GPT-4o (100 holísticas) + GPT 5.4 y Gemini 3 (sub-componentes D/C/F/R). Cobertura 100% (502/502 ocupaciones): 100 rescaladas (r = 0,953) + 402 informativas (r = 0,802). κ<sub>w</sub> = 0,667 (acuerdo sustancial, Landis-Koch). 158 ocupaciones con divergencia >2,0 puntos (97% en dirección fórmula < holístico) documentadas. Prompts, scripts y datos brutos publicados en Zenodo (DOI 10.5281/zenodo.19165098).",
-    "fullMethodology": "Metodología completa (56 notas técnicas) →",
+    "llmText": "Puntuaciones generadas con Gemini 2.5 Pro (T=0,2) y validadas con GPT-4o (100 holísticas) + GPT 5.4 y Gemini 3 (sub-componentes D/C/F/R). Cobertura 100% (502/502 ocupaciones): 177 rescaladas (r = 0,953) + 325 informativas (r = 0,802). κ<sub>w</sub> = 0,667 (acuerdo sustancial, Landis-Koch). 158 ocupaciones con divergencia >2,0 puntos (97% en dirección fórmula < holístico) documentadas. Prompts, scripts y datos brutos publicados en Zenodo (DOI 10.5281/zenodo.19165098).",
+    "fullMethodology": "Metodología completa (57 notas técnicas) →",
     "noteTitle": "Nota:",
-    "noteText": "Las puntuaciones son estimaciones de vulnerabilidad teórica, no predicciones de desplazamiento laboral. La evidencia empírica (Anthropic, febrero 2026) muestra que la vulnerabilidad teórica puede diferir significativamente de la adopción real (94% teórico vs 33% observado en ocupaciones informáticas/matemáticas). Aplicar un descuento del 70-80% para estimar el impacto actual. Metodología completa con 56 notas técnicas disponible en Zenodo."
+    "noteText": "Las puntuaciones son estimaciones de vulnerabilidad teórica, no predicciones de desplazamiento laboral. La evidencia empírica (Anthropic, febrero 2026) muestra que la vulnerabilidad teórica puede diferir significativamente de la adopción real (94% teórico vs 33% observado en ocupaciones informáticas/matemáticas). Aplicar un descuento del 70-80% para estimar el impacto actual. Metodología completa con 57 notas técnicas disponible en Zenodo."
   },
   "methodologyPanel": {
     "title": "Metodología y limitaciones",
@@ -170,13 +170,13 @@
     "sourcesText": "INE/EPA Q4 2025, Censo 2021, SEPE contratos 2024, EES 2023, Anuario MIR 2023, Boletín AAPP 2024, INAP, Academia de Prisiones/SGIP. Prompts, scripts y datos brutos: Zenodo DOI 10.5281/zenodo.19165098."
   },
   "footer": {
-    "credit": "Metodología v29a · 56 notas técnicas · Validación inter-modelo: κw = 0,667 · © 2026 A. de Nicolás, M. Sureda"
+    "credit": "Metodología v30 · 57 notas técnicas · Validación inter-modelo: κw = 0,667 · © 2026 A. de Nicolás, M. Sureda"
   },
   "histogram": {
     "title": "Distribución de ocupaciones por nivel de vulnerabilidad",
     "filtered": "ocupaciones filtradas",
     "scale": "Escala 0 (mínima) → 10 (máxima)",
-    "methodologyPdf": "Zenodo V28 (DOI)",
+    "methodologyPdf": "Zenodo V30 (DOI)",
     "low": "← Baja vulnerabilidad",
     "high": "Alta vulnerabilidad →"
   },

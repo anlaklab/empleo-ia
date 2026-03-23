@@ -77,7 +77,7 @@
     "p3": "The ≥7 threshold for 'high vulnerability' is indicative. Sensitivity band is 11.7%–15.2% under ±20% variations in calibration factors.",
     "p4": "4-digit employment figures are estimates (4-layer cascade). 5 occupations in CNO group 59 (police, civil guard, prisons) use official administrative data.",
     "p5": "EU AI Act classifies AI systems by use case (Annex III), not occupations. 'High risk' means AI systems in that context are subject to strict requirements, not that the job is at risk.",
-    "p6": "For labour policy or career decisions, consult the full methodology (56 technical notes) available on Zenodo."
+    "p6": "For labour policy or career decisions, consult the full methodology (57 technical notes) available on Zenodo."
   },
   "detail": {
     "employees": "Employees",
@@ -147,10 +147,10 @@
     "internationalTitle": "International comparison:",
     "internationalText": "The OECD estimates 28% of jobs at risk of automation in Spain, but that figure includes all technologies (robotics, traditional software, AI). The OECD AI-specific figure for Spain is 5.9% high risk (traditional automation) or 27.4% exposure to generative AI (different construct). Our 12.1% measures theoretical AI vulnerability calibrated with Spain-specific structural factors (47 occupations, 22.73M workers).",
     "llmTitle": "LLM scoring and inter-model validation:",
-    "llmText": "Scores generated with Gemini 2.5 Pro (T=0.2) and validated with GPT-4o (100 holistic) + GPT 5.4 and Gemini 3 (D/C/F/R sub-components). 100% coverage (502/502 occupations): 100 rescaled (r = 0.953) + 402 informative (r = 0.802). κ<sub>w</sub> = 0.667 (substantial agreement, Landis-Koch). 158 occupations with divergence >2.0 points documented in notes [21] and [47]. Prompts, scripts and raw data published on Zenodo (DOI 10.5281/zenodo.19165098).",
-    "fullMethodology": "Full methodology (56 technical notes) →",
+    "llmText": "Scores generated with Gemini 2.5 Pro (T=0.2) and validated with GPT-4o (100 holistic) + GPT 5.4 and Gemini 3 (D/C/F/R sub-components). 100% coverage (502/502 occupations): 177 rescaled (r = 0.953) + 325 informative (r = 0.802). κ<sub>w</sub> = 0.667 (substantial agreement, Landis-Koch). 158 occupations with divergence >2.0 points documented in notes [21] and [47]. Prompts, scripts and raw data published on Zenodo (DOI 10.5281/zenodo.19165098).",
+    "fullMethodology": "Full methodology (57 technical notes) →",
     "noteTitle": "Note:",
-    "noteText": "Scores are theoretical vulnerability estimates, not predictions of job displacement. Empirical evidence (Anthropic, February 2026) shows theoretical vulnerability can differ significantly from actual adoption (94% theoretical vs 33% observed in computing/mathematical occupations). Apply a 70-80% discount to estimate current impact. Full methodology with 56 technical notes available on Zenodo."
+    "noteText": "Scores are theoretical vulnerability estimates, not predictions of job displacement. Empirical evidence (Anthropic, February 2026) shows theoretical vulnerability can differ significantly from actual adoption (94% theoretical vs 33% observed in computing/mathematical occupations). Apply a 70-80% discount to estimate current impact. Full methodology with 57 technical notes available on Zenodo."
   },
   "methodologyPanel": {
     "title": "Methodology & limitations",
@@ -170,13 +170,13 @@
     "sourcesText": "INE/LFS Q4 2025, Census 2021, SEPE contracts 2024, WSS 2023, MIR Yearbook 2023, AAPP Bulletin 2024, INAP, Prison Academy/SGIP. Prompts, scripts and raw data: Zenodo DOI 10.5281/zenodo.19165098."
   },
   "footer": {
-    "credit": "Methodology v29a · 56 technical notes · Inter-model validation: κw = 0.667 · © 2026 A. de Nicolás, M. Sureda"
+    "credit": "Methodology v30 · 57 technical notes · Inter-model validation: κw = 0.667 · © 2026 A. de Nicolás, M. Sureda"
   },
   "histogram": {
     "title": "Occupation distribution by vulnerability level",
     "filtered": "occupations filtered",
     "scale": "Scale 0 (minimum) → 10 (maximum)",
-    "methodologyPdf": "Zenodo V28 (DOI)",
+    "methodologyPdf": "Zenodo V30 (DOI)",
     "low": "← Low vulnerability",
     "high": "High vulnerability →"
   },
