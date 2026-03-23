@@ -19,6 +19,30 @@ export interface RawOccupation {
   rescore_F?: number;
   rescore_R?: number;
   rescore_formula?: string;
+  // v14 fields
+  empleo_v10?: number;
+  empleo_delta_v11?: number;
+  employment_confidence?: string;
+  flag_divergencia_gt2?: boolean;
+  rescore_range?: string;
+  rescore_n_models?: number;
+  rescore_raw_avg?: number;
+  epa_2digit_empleo?: number;
+  sepe_contracts_2024?: number;
+  sepe_contracts_hombres?: number;
+  sepe_contracts_mujeres?: number;
+  sepe_parados_dic2024?: number;
+  sepe_parados_hombres_dic2024?: number;
+  sepe_parados_mujeres_dic2024?: number;
+  sepe_parados_jun2024?: number;
+  // admin override fields (5 patched occupations)
+  empleo_v13?: number;
+  admin_source?: string;
+  admin_source_ref?: string;
+  admin_source_url?: string;
+  admin_reference_date?: string;
+  admin_confidence?: string;
+  admin_notes?: string;
 }
 
 export interface Occupation {
@@ -44,6 +68,12 @@ export interface Occupation {
   rescoreF?: number;
   rescoreR?: number;
   rescoreFormula?: string;
+  rescoreRange?: string;
+  rescoreNModels?: number;
+  rescoreRawAvg?: number;
+  // v14 employment fields
+  employmentConfidence?: string;
+  flagDivergencia?: boolean;
   // treemap layout
   x?: number;
   y?: number;
@@ -130,5 +160,10 @@ export const parseOccupation = (d: RawOccupation): Occupation => ({
     rescoreF: d.rescore_F,
     rescoreR: d.rescore_R,
     rescoreFormula: d.rescore_formula,
+    rescoreRange: d.rescore_range,
+    rescoreNModels: d.rescore_n_models,
+    rescoreRawAvg: d.rescore_raw_avg,
   }),
+  ...(d.employment_confidence != null && { employmentConfidence: d.employment_confidence }),
+  ...(d.flag_divergencia_gt2 != null && { flagDivergencia: d.flag_divergencia_gt2 }),
 });

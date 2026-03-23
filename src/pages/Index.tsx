@@ -915,7 +915,7 @@ export default function Index() {
 
   useEffect(() => {
     setData(null);
-    const file = lang === "en" ? "/data/spain_502_v10_final_en.json" : "/data/spain_502_v10_final.json";
+    const file = lang === "en" ? "/data/spain_502_v14_subcomp_complete_en.json" : "/data/spain_502_v14_subcomp_complete.json";
     fetch(file)
       .then(r => { if (!r.ok) throw new Error("Failed to load data"); return r.json(); })
       .then((raw: RawOccupation[]) => setData(raw.map(parseOccupation)))
