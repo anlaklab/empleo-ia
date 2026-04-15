@@ -1,0 +1,44 @@
+---
+import type { SectorStat } from "@/data/loadOccupations";
+import { SCORE_COLORS } from "@/lib/occupationData";
+
+interface Props {
+  sectors: SectorStat[];
+}
+
+const { sectors } = Astro.props;
+const sorted = [...sectors].sort((a, b) => b.avgScore - a.avgScore);
+
+const F = "'DM Sans', sans-serif";
+const S = "'Cormorant Garamond', serif";
+---
+
+<section id="seo-sector-summary" style={`max-width:1200px;margin:2rem auto;padding:0 24px;font-family:${F};color:#1a1a1a;`}>
+  <h2 style={`font-size:clamp(18px,2vw,24px);font-family:${S};font-weight:600;margin-bottom:12px;color:#1a1a1a;`}>
+    Análisis por sector: vulnerabilidad a la IA
+  </h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px;">
+    {sorted.map((s) => {
+      const colorIdx = Math.round(Math.min(10, Math.max(0, s.avgScore)));
+      const color = SCORE_COLORS[colorIdx];
+      return (
+        <a href={`/sector/${s.slug}`} style="text-decoration:none;display:block;padding:14px 16px;background:#f0ece4;border-radius:6px;border:1px solid #e0dcd4;">
+          <div style={`font-size:13px;font-weight:600;color:#1a1a1a;margin-bottom:6px;font-family:${S};font-size:16px;`}>{s.sector}</div>
+          <div style="display:flex;gap:12px;font-size:11px;color:#888;margin-bottom:6px;">
+            <span>{s.count} ocupaciones</span>
+            <span>{s.employment.toLocaleString("es-ES")} trab.</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div style={`width:28px;height:28px;border-radius:50%;background:${color};display:flex;align-items:center;justify-content:center;color:#fff;font-size:10px;font-weight:700;`}>
+              {s.avgScore}
+            </div>
+            <span style={`font-size:12px;font-weight:600;color:${color};`}>Score medio: {s.avgScore}/10</span>
+            {s.highRiskCount > 0 && (
+              <span style="font-size:10px;color:#c8633a;">({s.highRiskCount} alto riesgo)</span>
+            )}
+          </div>
+        </a>
+      );
+    })}
+  </div>
+</section>

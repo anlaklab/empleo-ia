@@ -1,0 +1,70 @@
+---
+import type { RawOccupation } from "@/lib/occupationData";
+import { occupationSlug } from "@/data/loadOccupations";
+
+interface Props {
+  occupations: RawOccupation[];
+  enOccupations?: RawOccupation[];
+}
+
+const { occupations, enOccupations } = Astro.props;
+const enByCno = enOccupations ? new Map(enOccupations.map((d) => [d.cno, d])) : new Map();
+const totalEmployment = occupations.reduce((s, d) => s + d.empleo, 0);
+const avgScore = +(occupations.reduce((s, d) => s + d.vulnerabilidad_ia_score, 0) / occupations.length).toFixed(2);
+
+const F = "'DM Sans', sans-serif";
+const S = "'Cormorant Garamond', serif";
+---
+
+<section id="seo-occupation-table" style={`max-width:1200px;margin:2rem auto;padding:0 24px;font-family:${F};color:#1a1a1a;`}>
+  <h2 style={`font-size:clamp(18px,2vw,24px);font-family:${S};font-weight:600;margin-bottom:4px;color:#1a1a1a;`}>
+    {occupations.length} ocupaciones del mercado laboral español: vulnerabilidad a la IA
+  </h2>
+  <p style="margin-bottom:12px;font-size:12px;color:#888;">
+    Datos: EPA Q4 2025, INE Census 2021, SEPE 2024 · Metodología v30 · {totalEmployment.toLocaleString("es-ES")} trabajadores · Score medio: {avgScore}/10
+  </p>
+  <div style="overflow-x:auto;">
+    <table style="width:100%;border-collapse:collapse;font-size:11px;line-height:1.4;">
+      <caption style="text-align:left;padding:0.5rem 0;font-size:11px;color:#999;">
+        Análisis de vulnerabilidad a la inteligencia artificial de las {occupations.length} ocupaciones CNO-11 del mercado laboral espa��ol. Puntuación 0 (mínima exposición) a 10 (máxima exposición).
+      </caption>
+      <thead>
+        <tr style="border-bottom:2px solid #e0dcd4;text-align:left;">
+          <th scope="col" style="padding:6px 8px;font-size:9px;text-transform:uppercase;letter-spacing:1px;color:#aaa;font-weight:600;">CNO</th>
+          <th scope="col" style="padding:6px 8px;font-size:9px;text-transform:uppercase;letter-spacing:1px;color:#aaa;font-weight:600;">Ocupación</th>
+          <th scope="col" style="padding:6px 8px;font-size:9px;text-transform:uppercase;letter-spacing:1px;color:#aaa;font-weight:600;">Sector</th>
+          <th scope="col" style="padding:6px 8px;font-size:9px;text-transform:uppercase;letter-spacing:1px;color:#aaa;font-weight:600;">Empleo</th>
+          <th scope="col" style="padding:6px 8px;font-size:9px;text-transform:uppercase;letter-spacing:1px;color:#aaa;font-weight:600;">Salario medio</th>
+          <th scope="col" style="padding:6px 8px;font-size:9px;text-transform:uppercase;letter-spacing:1px;color:#aaa;font-weight:600;">Score IA</th>
+          <th scope="col" style="padding:6px 8px;font-size:9px;text-transform:uppercase;letter-spacing:1px;color:#aaa;font-weight:600;">EU AI Act</th>
+          <th scope="col" style="padding:6px 8px;font-size:9px;text-transform:uppercase;letter-spacing:1px;color:#aaa;font-weight:600;">Tipo impacto</th>
+        </tr>
+      </thead>
+      <tbody>
+        {occupations.map((d, i) => {
+          const en = enByCno.get(d.cno);
+          const slug = occupationSlug(d);
+          return (
+            <tr style={`border-bottom:1px solid #f0ece4;${i % 2 === 0 ? "background:#f5f1eb;" : ""}`}>
+              <td style="padding:4px 8px;">
+                <a href={`/ocupacion/${slug}`} style="color:#c8633a;text-decoration:none;font-weight:600;">{d.cno}</a>
+              </td>
+              <td style="padding:4px 8px;">
+                <a href={`/ocupacion/${slug}`} style="color:#1a1a1a;text-decoration:none;">
+                  {d.nombre}
+                  {en && <small style="color:#bbb;"> ({en.nombre})</small>}
+                </a>
+              </td>
+              <td style="padding:4px 8px;color:#888;">{d.sector}</td>
+              <td style="padding:4px 8px;color:#555;font-variant-numeric:tabular-nums;">{d.empleo.toLocaleString("es-ES")}</td>
+              <td style="padding:4px 8px;color:#555;font-variant-numeric:tabular-nums;">{d.salario_medio_eur.toLocaleString("es-ES")} €</td>
+              <td style="padding:4px 8px;font-weight:600;color:#1a1a1a;">{d.vulnerabilidad_ia_score}</td>
+              <td style="padding:4px 8px;color:#888;">{d.eu_ai_act}</td>
+              <td style="padding:4px 8px;color:#888;">{d.tipo_impacto}</td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
+  </div>
+</section>

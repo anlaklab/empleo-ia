@@ -54,6 +54,9 @@ export const trackSectorGroupClick = (sector: string) =>
 export const trackShare = (channel: string, cno: string) =>
   track("share", { channel, cno });
 
+export const trackShareUrl = (url: string) =>
+  track("share-url", { url: url.slice(0, 100) });
+
 // — Methodology & info —
 export const trackMethodologyOpen = () =>
   track("methodology-open");

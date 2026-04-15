@@ -1,0 +1,192 @@
+---
+import Base from "../../layouts/Base.astro";
+import ScoreBadgeStatic from "../../components/astro/ScoreBadgeStatic.astro";
+import { SCORE_COLORS } from "@/lib/occupationData";
+import { loadAllOccupations, occupationSlug, sectorSlug } from "@/data/loadOccupations";
+
+export async function getStaticPaths() {
+  const { es, en, enByCno } = loadAllOccupations();
+  return es.map((occ) => ({
+    params: { slug: occupationSlug(occ) },
+    props: { occ, en: enByCno.get(occ.cno)! },
+  }));
+}
+
+const { occ, en } = Astro.props;
+const score = occ.vulnerabilidad_ia_score;
+const colorIndex = Math.round(Math.min(10, Math.max(0, score)));
+const scoreColor = SCORE_COLORS[colorIndex];
+
+const title = `${occ.nombre} — Vulnerabilidad IA ${score}/10`;
+const description = `${occ.nombre} (CNO ${occ.cno}): score de vulnerabilidad a la IA de ${score}/10, ${occ.empleo.toLocaleString("es-ES")} empleados, salario medio ${occ.salario_medio_eur.toLocaleString("es-ES")} €. Sector: ${occ.sector}.`;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Occupation",
+  "name": occ.nombre,
+  "alternateName": en.nombre,
+  "occupationalCategory": `CNO-11:${occ.cno}`,
+  "description": occ.justificacion,
+  "estimatedSalary": {
+    "@type": "MonetaryAmountDistribution",
+    "name": "Salario medio anual",
+    "currency": "EUR",
+    "median": occ.salario_medio_eur,
+  },
+  "occupationLocation": { "@type": "Country", "name": "Spain" },
+  "mainEntityOfPage": Astro.url.href,
+};
+
+const wageIndex = occ.empleo * occ.salario_medio_eur * (score / 10);
+const wageLabel = wageIndex >= 1e9 ? (wageIndex / 1e9).toFixed(1) + "B €" : (wageIndex / 1e6).toFixed(0) + "M €";
+
+const F = "'DM Sans', sans-serif";
+const S = "'Cormorant Garamond', serif";
+---
+
+<Base title={title} description={description} jsonLd={jsonLd}>
+  <div style={`background:#faf8f4;color:#1a1a1a;min-height:100vh;font-family:${F};`}>
+    <article style="max-width:900px;margin:0 auto;padding:28px 24px;">
+
+      <!-- Breadcrumb -->
+      <nav style="font-size:10px;text-transform:uppercase;letter-spacing:2px;color:#bbb;margin-bottom:6px;">
+        <a href="/" style="color:#c8633a;text-decoration:none;">Inicio</a>
+        <span style="margin:0 4px;">›</span>
+        <a href="/sector/" style="color:#c8633a;text-decoration:none;">Sectores</a>
+        <span style="margin:0 4px;">›</span>
+        <a href={`/sector/${sectorSlug(occ.sector)}`} style="color:#c8633a;text-decoration:none;">{occ.sector}</a>
+        <span style="margin:0 4px;">›</span>
+        <span>CNO {occ.cno}</span>
+      </nav>
+
+      <!-- Header -->
+      <h1 style={`font-size:clamp(26px,3.5vw,44px);font-family:${S};font-weight:600;margin:0 0 4px;line-height:1.08;color:#1a1a1a;`}>
+        {occ.nombre}
+      </h1>
+      <p style="font-size:14px;color:#888;margin:0 0 20px;font-style:italic;">
+        {en.nombre}
+      </p>
+
+      <!-- Score + label -->
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:24px;">
+        <ScoreBadgeStatic score={score} size="lg" />
+        <div>
+          <div style={`font-size:15px;font-weight:600;color:${scoreColor};`}>
+            Exposición a la IA: {score >= 8 ? "Muy alta" : score >= 6 ? "Alta" : score >= 4 ? "Moderada" : score >= 2 ? "Baja" : "Muy baja"}
+          </div>
+          <div style="font-size:12px;color:#888;">{score.toFixed(1)} / 10</div>
+          <div style="font-size:10px;color:#b08050;margin-top:2px;font-style:italic;">Estimación teórica — no predicción</div>
+        </div>
+      </div>
+
+      <!-- Stats ribbon -->
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;">
+        <div style="padding:14px 16px;background:#f0ece4;border-radius:6px;flex:1 1 150px;min-width:140px;">
+          <div style="font-size:9px;text-transform:uppercase;letter-spacing:1.3px;color:#aaa;margin-bottom:4px;">Empleados</div>
+          <div style={`font-size:22px;font-weight:700;font-family:${S};line-height:1.1;color:#1a1a1a;`}>
+            {occ.empleo >= 1e6 ? (occ.empleo / 1e6).toFixed(1) + "M" : occ.empleo >= 1e3 ? Math.round(occ.empleo / 1e3) + "K" : occ.empleo.toLocaleString("es-ES")}
+          </div>
+        </div>
+        <div style="padding:14px 16px;background:#f0ece4;border-radius:6px;flex:1 1 150px;min-width:140px;">
+          <div style="font-size:9px;text-transform:uppercase;letter-spacing:1.3px;color:#aaa;margin-bottom:4px;">Salario medio</div>
+          <div style={`font-size:22px;font-weight:700;font-family:${S};line-height:1.1;color:#1a1a1a;`}>
+            {occ.salario_medio_eur.toLocaleString("es-ES")} €
+          </div>
+        </div>
+        <div style="padding:14px 16px;background:#f0ece4;border-radius:6px;flex:1 1 150px;min-width:140px;">
+          <div style="font-size:9px;text-transform:uppercase;letter-spacing:1.3px;color:#aaa;margin-bottom:4px;">Índice salarial expuesto</div>
+          <div style={`font-size:22px;font-weight:700;font-family:${S};line-height:1.1;color:#c8633a;`}>
+            {wageLabel}
+          </div>
+          <div style="font-size:10px;color:#c8633a;margin-top:2px;font-weight:600;">empleo × salario × score</div>
+        </div>
+      </div>
+
+      <!-- D/C/F/R sub-component breakdown -->
+      {occ.rescore_D != null && (
+        <div style="margin-bottom:20px;padding:16px;background:#f0ece4;border-radius:8px;border:1px solid #e0dcd4;">
+          <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:#999;margin-bottom:12px;font-weight:600;">
+            Sub-componentes del score
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            {[
+              { key: "D", label: "Potencial desplazamiento", value: occ.rescore_D!, color: "#b04232" },
+              { key: "C", label: "Capacidad IA actual", value: occ.rescore_C!, color: "#d4a85a" },
+              { key: "F", label: "Fricción a la adopción", value: occ.rescore_F!, color: "#3a7d9e" },
+              { key: "R", label: "Protección regulatoria", value: occ.rescore_R!, color: "#5494ab" },
+            ].map((b) => (
+              <div style="display:flex;align-items:center;gap:10px;">
+                <div style={`width:14px;font-size:12px;font-weight:700;color:${b.color};text-align:center;flex-shrink:0;`}>{b.key}</div>
+                <div style="flex:1;min-width:0;">
+                  <div style="display:flex;justify-content:space-between;margin-bottom:2px;">
+                    <span style="font-size:10px;color:#666;">{b.label}</span>
+                    <span style={`font-size:11px;font-weight:700;color:#1a1a1a;font-family:${S};`}>{b.value.toFixed(1)}</span>
+                  </div>
+                  <div style="height:6px;background:#e0dcd4;border-radius:3px;overflow:hidden;">
+                    <div style={`height:100%;width:${(b.value / 10) * 100}%;background:${b.color};border-radius:3px;`} />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          {occ.rescore_formula && (
+            <div style="margin-top:10px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;">
+              <span style="font-size:10px;color:#888;">
+                Fórmula: <code style="font-size:10px;background:#e8e4dc;padding:1px 5px;border-radius:3px;">{occ.rescore_formula}</code>
+              </span>
+              {occ.score_v9 != null && (
+                <span style="font-size:10px;color:#888;font-weight:600;">
+                  Rescored: {occ.score_v9.toFixed(1)} → {score.toFixed(1)}
+                </span>
+              )}
+            </div>
+          )}
+        </div>
+      )}
+
+      <!-- Automation vector -->
+      <div style="margin-bottom:16px;">
+        <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:#999;margin-bottom:6px;">Vector de automatización</div>
+        <div style={`font-size:13px;color:#444;line-height:1.5;padding:10px;background:#f0ece4;border-radius:5px;border-left:3px solid ${scoreColor};`}>
+          {occ.justificacion}
+        </div>
+      </div>
+
+      <!-- English justification -->
+      <div style="margin-bottom:16px;">
+        <div style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:#999;margin-bottom:6px;">Automation vector (English)</div>
+        <div style="font-size:13px;color:#666;line-height:1.5;padding:10px;background:#f0ece4;border-radius:5px;">
+          {en.justificacion}
+        </div>
+      </div>
+
+      <!-- Impact type + EU AI Act -->
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:16px;">
+        <span style="padding:4px 12px;border-radius:16px;font-size:11px;font-weight:600;background:#f0ece4;color:#666;border:1px solid #e0dcd4;">
+          {occ.tipo_impacto}
+        </span>
+        <span style={`padding:4px 12px;border-radius:16px;font-size:11px;font-weight:600;background:${scoreColor}18;color:${scoreColor};border:1px solid ${scoreColor}33;`}>
+          EU AI Act: {occ.eu_ai_act}
+        </span>
+        {occ.employment_confidence && (
+          <span style={`padding:4px 12px;border-radius:16px;font-size:11px;font-weight:600;background:${occ.employment_confidence === "A+" ? "#3a7d9e22" : occ.employment_confidence === "A" ? "#5494ab22" : "#d4a85a22"};color:${occ.employment_confidence === "A+" ? "#2b6a8e" : occ.employment_confidence === "A" ? "#3a7d9e" : "#b08050"};`}>
+            Confianza empleo: {occ.employment_confidence}
+          </span>
+        )}
+      </div>
+
+      <!-- CTA -->
+      <div style="margin-top:24px;padding-top:16px;border-top:1px solid #e8e4dc;">
+        <a href={`/?cno=${occ.cno}`} style={`display:inline-flex;align-items:center;gap:6px;padding:7px 14px;font-size:11px;font-weight:600;font-family:${F};background:#1a1a1a;color:#faf8f4;border-radius:5;text-decoration:none;letter-spacing:0.3px;`}>
+          → Ver en el dashboard interactivo
+        </a>
+      </div>
+
+      <!-- Footer -->
+      <div style="margin-top:20px;font-size:10px;color:#bbb;line-height:1.65;">
+        <strong style="color:#999;">Fuente:</strong> EPA Q4 2025, INE Census 2021, SEPE 2024 · Metodología v30 · CC BY 4.0 ·
+        Autores: Álvaro de Nicolás, Miguel Sureda
+      </div>
+    </article>
+  </div>
+</Base>

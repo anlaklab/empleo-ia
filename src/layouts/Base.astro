@@ -1,0 +1,83 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+  jsonLd?: object | object[];
+  noindex?: boolean;
+}
+
+const { title, description, canonical, ogImage, jsonLd, noindex } = Astro.props;
+const canonicalUrl = canonical || new URL(Astro.url.pathname, Astro.site).href;
+const image = ogImage || new URL('/og-image.png', Astro.site).href;
+const siteName = "Vulnerabilidad Laboral a la IA · España 2026";
+
+// Normalize jsonLd to array
+const jsonLdItems = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+---
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="Álvaro de Nicolás, Miguel Sureda" />
+    <meta name="robots" content={noindex ? "noindex" : "index, follow"} />
+    <meta name="theme-color" content="#1a1a1a" />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Preconnect for fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Language variants -->
+    <link rel="alternate" hreflang="es" href={`${Astro.site}?lang=es`} />
+    <link rel="alternate" hreflang="en" href={`${Astro.site}?lang=en`} />
+    <link rel="alternate" hreflang="x-default" href={Astro.site?.toString()} />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+
+    <!-- Alternate data formats -->
+    <link rel="alternate" type="application/json" href="/data/spain_502_v14_subcomp_complete.json" />
+    <link rel="alternate" type="text/plain" href="/llms-full.txt" />
+
+    <!-- Structured Data -->
+    {jsonLdItems.map((item) => (
+      <script type="application/ld+json" set:html={JSON.stringify(item)} />
+    ))}
+
+    <!-- Analytics -->
+    <script defer src="https://umami.anlakstudio.com/script.js" data-website-id="002f081c-5097-4b0c-970b-602f8e90b3e1"></script>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

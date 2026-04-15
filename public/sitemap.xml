@@ -10,4 +10,16 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://empleo-ai.anlakstudio.com?lang=en" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://empleo-ai.anlakstudio.com" />
   </url>
+  <url>
+    <loc>https://empleo-ai.anlakstudio.com/llms.txt</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://empleo-ai.anlakstudio.com/llms-full.txt</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
