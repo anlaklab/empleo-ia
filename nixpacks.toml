@@ -4,10 +4,9 @@ cmds = ["npm install"]
 [phases.build]
 cmds = [
   "find node_modules -maxdepth 1 -not -name '.cache' -not -name 'node_modules' -exec rm -rf {} + && rm -f package-lock.json && npm install && npm run build",
-  # Overwrite Nixpacks' auto-generated Caddyfile (SPA-fallback, breaks Astro
-  # directory routes) with the one in the repo. Done after the build so the
-  # path is stable. Nixpacks' default [start] reads /assets/Caddyfile, which
-  # is what we replace here, instead of trying to override [start] itself
-  # (that route gave Bad Gateway because runtime image layout differs).
+  # Validate our Caddyfile BEFORE swapping it in. If syntax is invalid, the
+  # build fails here with a clear error (instead of Bad Gateway in runtime).
+  "caddy validate --adapter caddyfile --config /app/Caddyfile",
+  # Overwrite Nixpacks' auto-generated Caddyfile (SPA-fallback) with ours.
   "cp /app/Caddyfile /assets/Caddyfile"
 ]

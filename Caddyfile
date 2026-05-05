@@ -1,19 +1,6 @@
 :{$PORT:80} {
 	root * /app/dist
 	encode gzip
-
-	# Astro static routing (per Álvaro's recommendation):
-	#   1) {path}                 — exact file
-	#   2) {path}/index.html      — directory routes (/sector/foo/ → dist/sector/foo/index.html)
-	#   3) {path}.html            — extensionless URLs (/comparativa-funcas → .html)
-	#   4) =404                   — explicit 404 (caught by handle_errors below to serve 404.html)
-	# Crucially NOT `try_files {path} /index.html` — that's the SPA fallback that breaks every Astro route.
-	try_files {path} {path}/index.html {path}.html =404
-
+	try_files {path} {path}/index.html {path}.html
 	file_server
-
-	handle_errors {
-		rewrite * /404.html
-		file_server
-	}
 }
