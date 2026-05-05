@@ -1,6 +1,16 @@
 :{$PORT:80} {
 	root * /app/dist
 	encode gzip
+
+	# Health check endpoint — Dokploy/Traefik probes this; without it the
+	# reverse proxy marks the container as unhealthy and returns Bad Gateway
+	# even though Caddy itself is running fine.
+	respond /health 200
+
+	# Astro static routing:
+	#   1) {path}                 — exact file
+	#   2) {path}/index.html      — directory routes (/sector/foo/ → dist/sector/foo/index.html)
+	#   3) {path}.html            — extensionless URLs (/comparativa-funcas → .html)
 	try_files {path} {path}/index.html {path}.html
 	file_server
 }
