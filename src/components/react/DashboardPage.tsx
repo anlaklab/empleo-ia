@@ -442,7 +442,24 @@ function Dashboard({ data }: { data: Occupation[] }) {
           <div style={{ fontSize: 10, textTransform: "uppercase", letterSpacing: "2.5px", color: "#bbb", marginBottom: 6 }}>
             {t("header.subtitle")}
           </div>
-          <LanguageToggle />
+          <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
+            <a
+              href="/comparativa-funcas.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "inline-flex", alignItems: "center", gap: 6,
+                padding: "8px 14px", fontSize: 11, fontWeight: 700,
+                background: "#1a1a1a", color: "#faf8f4",
+                borderRadius: 6, textDecoration: "none",
+                letterSpacing: "0.5px", textTransform: "uppercase",
+                fontFamily: F,
+              }}
+            >
+              📊 Comparativa FUNCAS
+            </a>
+            <LanguageToggle />
+          </div>
         </div>
         <h1 style={{
           fontSize: "clamp(26px, 3.5vw, 44px)", fontFamily: S, fontWeight: 600,
