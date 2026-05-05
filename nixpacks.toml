@@ -2,11 +2,12 @@
 cmds = ["npm install"]
 
 [phases.build]
-cmds = ["find node_modules -maxdepth 1 -not -name '.cache' -not -name 'node_modules' -exec rm -rf {} + && rm -f package-lock.json && npm install && npm run build"]
-
-# Use our own Caddyfile so directory routes (/sector/foo/, /ocupacion/bar/) resolve
-# to dist/sector/foo/index.html etc. The default Nixpacks Caddyfile has
-# `try_files {path} /index.html` which falls back to the home page for any
-# unresolved path — that breaks every Astro page except the root.
-[start]
-cmd = "caddy run --config /app/Caddyfile --adapter caddyfile"
+cmds = [
+  "find node_modules -maxdepth 1 -not -name '.cache' -not -name 'node_modules' -exec rm -rf {} + && rm -f package-lock.json && npm install && npm run build",
+  # Overwrite Nixpacks' auto-generated Caddyfile (SPA-fallback, breaks Astro
+  # directory routes) with the one in the repo. Done after the build so the
+  # path is stable. Nixpacks' default [start] reads /assets/Caddyfile, which
+  # is what we replace here, instead of trying to override [start] itself
+  # (that route gave Bad Gateway because runtime image layout differs).
+  "cp /app/Caddyfile /assets/Caddyfile"
+]
