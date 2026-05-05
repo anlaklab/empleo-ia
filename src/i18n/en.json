@@ -176,7 +176,7 @@
     "title": "Occupation distribution by vulnerability level",
     "filtered": "occupations filtered",
     "scale": "Scale 0 (minimum) → 10 (maximum)",
-    "methodologyPdf": "Zenodo V30 (DOI)",
+    "methodologyPdf": "View details on Zenodo",
     "low": "← Low vulnerability",
     "high": "High vulnerability →"
   },
