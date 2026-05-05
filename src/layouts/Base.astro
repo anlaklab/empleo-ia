@@ -1,4 +1,6 @@
 ---
+import { SITE } from "../config/site";
+
 interface Props {
   title: string;
   description: string;
@@ -27,6 +29,14 @@ const jsonLdItems = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
     <meta name="robots" content={noindex ? "noindex" : "index, follow"} />
     <meta name="theme-color" content="#1a1a1a" />
     <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Search engine ownership verification (managed in src/config/site.ts) -->
+    {SITE.googleSiteVerification && (
+      <meta name="google-site-verification" content={SITE.googleSiteVerification} />
+    )}
+    {SITE.bingSiteVerification && (
+      <meta name="msvalidate.01" content={SITE.bingSiteVerification} />
+    )}
 
     <!-- Preconnect for fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -72,7 +82,9 @@ const jsonLdItems = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
     ))}
 
     <!-- Analytics -->
-    <script defer src="https://umami.anlakstudio.com/script.js" data-website-id="002f081c-5097-4b0c-970b-602f8e90b3e1"></script>
+    {SITE.umamiWebsiteId && SITE.umamiSrc && (
+      <script defer src={SITE.umamiSrc} data-website-id={SITE.umamiWebsiteId}></script>
+    )}
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
