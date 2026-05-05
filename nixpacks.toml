@@ -3,3 +3,10 @@ cmds = ["npm install"]
 
 [phases.build]
 cmds = ["find node_modules -maxdepth 1 -not -name '.cache' -not -name 'node_modules' -exec rm -rf {} + && rm -f package-lock.json && npm install && npm run build"]
+
+# Use our own Caddyfile so directory routes (/sector/foo/, /ocupacion/bar/) resolve
+# to dist/sector/foo/index.html etc. The default Nixpacks Caddyfile has
+# `try_files {path} /index.html` which falls back to the home page for any
+# unresolved path — that breaks every Astro page except the root.
+[start]
+cmd = "caddy run --config /app/Caddyfile --adapter caddyfile"
