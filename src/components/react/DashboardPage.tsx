@@ -150,7 +150,7 @@ function Dashboard({ data }: { data: Occupation[] }) {
               {filtered.length} {t("histogram.filtered", "ocupaciones filtradas")} · {t("histogram.scale", "Escala 0 (mínima) → 10 (máxima)")}
             </div>
           </div>
-          <a href="https://zenodo.org/records/19186444" target="_blank" rel="noopener noreferrer"
+          <a href="https://doi.org/10.5281/zenodo.19076797" target="_blank" rel="noopener noreferrer"
             style={{
               display: "inline-flex", alignItems: "center", gap: 6,
               padding: "7px 14px", fontSize: 11, fontWeight: 600, fontFamily: F,
@@ -1022,7 +1022,7 @@ function Dashboard({ data }: { data: Occupation[] }) {
           <br />
           <strong style={{ color: "#999" }}>{t("methodology.internationalTitle")}</strong> {t("methodology.internationalText")}
           <br />
-          <strong style={{ color: "#999" }}>{t("methodology.llmTitle")}</strong> <span dangerouslySetInnerHTML={{ __html: t("methodology.llmText") }} /> <a href="https://zenodo.org/records/19186444" target="_blank" rel="noopener noreferrer" onClick={() => analytics.trackMethodologyLink("zenodo")} style={{ color: "#c8633a", textDecoration: "underline" }}>{t("methodology.fullMethodology")}</a>
+          <strong style={{ color: "#999" }}>{t("methodology.llmTitle")}</strong> <span dangerouslySetInnerHTML={{ __html: t("methodology.llmText") }} /> <a href="https://doi.org/10.5281/zenodo.19076797" target="_blank" rel="noopener noreferrer" onClick={() => analytics.trackMethodologyLink("zenodo")} style={{ color: "#c8633a", textDecoration: "underline" }}>{t("methodology.fullMethodology")}</a>
           <br />
           <strong style={{ color: "#999" }}>{t("methodology.noteTitle")}</strong> {t("methodology.noteText")}
         </div>

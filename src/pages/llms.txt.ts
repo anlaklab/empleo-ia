@@ -54,8 +54,7 @@ ${sectorList}
 
 - [Interactive visualization](${BASE_URL}): Treemap, scatter plot, and list views of the ${es.length} occupations.
 - [Funcas cross-validation page](${BASE_URL}/comparativa-funcas.html): Side-by-side comparison with the Funcas DT-2026/04 study, including the r=0.936 convergence finding, scatter plot of the 9 CNO grand groups, and 4-digit decomposition of the most-flagged groups.
-- [Zenodo · methodology v30](https://zenodo.org/records/19186444): Permanent academic record of the methodology.
-- [Zenodo · cross-validation addendum](https://zenodo.org/records/20031741): Permanent academic record of the validation against Funcas.
+- [Zenodo · IA y Empleo en España (concept DOI)](https://doi.org/10.5281/zenodo.19076797): Permanent academic record. Includes methodology v30, dataset v15, and the cross-validation addendum against Funcas.
 
 ## Source & License
 

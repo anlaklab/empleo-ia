@@ -114,8 +114,7 @@ export function generateDatasetJsonLd(data: RawOccupation[]) {
       "license": "https://creativecommons.org/licenses/by/4.0/",
       "temporalCoverage": "2025",
       "identifier": [
-        "https://zenodo.org/records/19186444",
-        "https://zenodo.org/records/20031741",
+        "https://doi.org/10.5281/zenodo.19076797",
       ],
       "distribution": [
         { "@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": `${BASE_URL}/data/spain_502_v15_subcomp_complete.json` },
