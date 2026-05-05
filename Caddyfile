@@ -2,11 +2,13 @@
 	root * /app/dist
 	encode gzip
 
-	# Astro static routing:
-	#   1) {path}            — exact file or directory (file_server then serves dir/index.html)
-	#   2) {path}.html       — extensionless URLs like /comparativa-funcas → .html
-	# No SPA fallback to /index.html: real 404s reach handle_errors → 404.html
-	try_files {path} {path}.html
+	# Astro static routing (per Álvaro's recommendation):
+	#   1) {path}                 — exact file
+	#   2) {path}/index.html      — directory routes (/sector/foo/ → dist/sector/foo/index.html)
+	#   3) {path}.html            — extensionless URLs (/comparativa-funcas → .html)
+	#   4) =404                   — explicit 404 (caught by handle_errors below to serve 404.html)
+	# Crucially NOT `try_files {path} /index.html` — that's the SPA fallback that breaks every Astro route.
+	try_files {path} {path}/index.html {path}.html =404
 
 	file_server
 
