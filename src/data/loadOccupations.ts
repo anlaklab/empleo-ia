@@ -188,7 +188,7 @@ export function generateFaqJsonLd(data: RawOccupation[]) {
       {
         "@type": "Question",
         "name": "¿Cómo se relaciona este dataset con el estudio Funcas sobre IA y empleo en España?",
-        "acceptedAnswer": { "@type": "Answer", "text": `El estudio Funcas (Rodríguez-Fernández, abril 2026) estima 1,7-2,3 millones de empleos destruidos por IA en España en diez años, agregados a los 9 grandes grupos CNO-11. Este dataset opera al cuarto dígito (502 ocupaciones) con una metodología independiente. Cuando se agregan los scores de v15 al primer dígito y se comparan con el AIOE-CNO de Funcas, la correlación de Pearson es r = 0,936 (Spearman ρ = 0,830). Dos metodologías independientes con inputs disjuntos convergen al nivel macro; v15 añade granularidad ocupacional al cuarto dígito. Detalle completo en /comparativa-funcas/.` },
+        "acceptedAnswer": { "@type": "Answer", "text": `El estudio Funcas (Rodríguez-Fernández, abril 2026) estima 1,7-2,3 millones de empleos destruidos por IA en España en diez años, agregados a los 9 grandes grupos CNO-11. Este dataset opera al cuarto dígito (502 ocupaciones) con una metodología independiente. Cuando se agregan los scores de v15 al primer dígito y se comparan con el AIOE-CNO de Funcas, la correlación de Pearson es r = 0,936 (Spearman ρ = 0,830). Dos metodologías independientes con inputs disjuntos convergen al nivel macro; v15 añade granularidad ocupacional al cuarto dígito. Detalle completo en /comparativa-funcas.html.` },
       },
     ],
   };

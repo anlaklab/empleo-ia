@@ -34,3 +34,6 @@ dist-ssr
 !public/apple-touch-icon.png
 !public/android-chrome-*.png
 !public/favicon_preview_512.png
+
+# Astro cache
+.astro/

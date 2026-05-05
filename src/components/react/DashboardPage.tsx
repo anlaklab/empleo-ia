@@ -444,7 +444,7 @@ function Dashboard({ data }: { data: Occupation[] }) {
           </div>
           <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
             <a
-              href="/comparativa-funcas/"
+              href="/comparativa-funcas.html"
               style={{
                 display: "inline-flex", alignItems: "center", gap: 6,
                 padding: "8px 14px", fontSize: 11, fontWeight: 700,
