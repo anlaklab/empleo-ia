@@ -1,0 +1,101 @@
+---
+/**
+ * Cumulative workforce by vulnerability threshold.
+ * Static SVG bar chart for SEO + zero-JS rendering.
+ * Data source: precomputed from dataset v15 (spain_v15_threshold_lookup.csv).
+ */
+
+interface Row {
+  threshold: number;
+  occupations: number;
+  workers: number;
+  pct: number;
+}
+
+const rows: Row[] = [
+  { threshold: 9.0, occupations: 1, workers: 49318, pct: 0.22 },
+  { threshold: 8.5, occupations: 5, workers: 273077, pct: 1.20 },
+  { threshold: 8.0, occupations: 12, workers: 1104132, pct: 4.86 },
+  { threshold: 7.5, occupations: 41, workers: 2666360, pct: 11.73 },
+  { threshold: 7.0, occupations: 47, workers: 2752961, pct: 12.11 },
+  { threshold: 6.0, occupations: 90, workers: 4669215, pct: 20.54 },
+  { threshold: 5.0, occupations: 131, workers: 6236350, pct: 27.43 },
+  { threshold: 4.0, occupations: 200, workers: 8379972, pct: 36.86 },
+  { threshold: 3.0, occupations: 328, workers: 12697244, pct: 55.86 },
+  { threshold: 2.0, occupations: 438, workers: 17725208, pct: 77.97 },
+];
+
+const F = "'DM Sans', sans-serif";
+const S = "'Cormorant Garamond', serif";
+
+// Score → color from the existing palette (orange/red for high, blue for low)
+const colorFor = (s: number) => {
+  if (s >= 8) return "#b04232";
+  if (s >= 7) return "#c8633a";
+  if (s >= 6) return "#d9883e";
+  if (s >= 5) return "#d4a85a";
+  if (s >= 4) return "#bdb58e";
+  if (s >= 3) return "#97bfca";
+  return "#3a7d9e";
+};
+
+const maxPct = Math.max(...rows.map((r) => r.pct));
+const fmt = (n: number) => n.toLocaleString("es-ES");
+---
+
+<section id="seo-threshold-curve" style={`max-width:1200px;margin:2rem auto 0;padding:0 24px;font-family:${F};color:#1a1a1a;`}>
+  <div style="background:#fff;border:1px solid #e0dcd4;border-radius:8px;padding:24px 28px;">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px;margin-bottom:8px;">
+      <div>
+        <h2 style={`font-size:clamp(18px,2vw,24px);font-family:${S};font-weight:600;margin-bottom:4px;color:#1a1a1a;`}>
+          Cuántos trabajadores hay por encima de cada umbral
+        </h2>
+        <p style="font-size:13px;color:#888;margin:0;">
+          Acumulado descendente desde score 9 a 2 · 22.732.223 trabajadores totales · Dataset v15
+        </p>
+      </div>
+      <a href="/comparativa-funcas/" style="display:inline-flex;align-items:center;gap:6px;padding:8px 14px;font-size:11px;font-weight:600;background:#5a7048;color:#faf8f4;border-radius:5px;text-decoration:none;letter-spacing:0.3px;">
+        Ver comparativa Funcas →
+      </a>
+    </div>
+
+    <div style="margin-top:20px;">
+      {rows.map((r) => {
+        const widthPct = Math.max(0.5, (r.pct / maxPct) * 100);
+        const color = colorFor(r.threshold);
+        const labelInside = widthPct > 14;
+        return (
+          <div style="display:grid;grid-template-columns:64px 1fr 130px;align-items:center;gap:12px;padding:7px 0;border-bottom:1px solid #f0ece4;">
+            <div style={`font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;color:#666;font-weight:500;`}>
+              ≥ {r.threshold.toFixed(1)}
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;height:22px;">
+              <div style={`width:${widthPct}%;height:100%;background:${color};border-radius:3px;display:flex;align-items:center;justify-content:flex-end;padding:0 10px;flex-shrink:0;`}>
+                {labelInside && (
+                  <span style="color:#fff;font-size:11px;font-weight:600;font-family:'JetBrains Mono',ui-monospace,monospace;">
+                    {r.pct.toFixed(2)}%
+                  </span>
+                )}
+              </div>
+              {!labelInside && (
+                <span style="font-size:11px;font-weight:600;color:#444;font-family:'JetBrains Mono',ui-monospace,monospace;white-space:nowrap;">
+                  {r.pct.toFixed(2)}%
+                </span>
+              )}
+            </div>
+            <div style="font-size:12px;color:#666;text-align:right;">
+              <span style="font-weight:600;color:#1a1a1a;">{fmt(r.workers)}</span>
+              <span style="color:#999;"> · {r.occupations} ocup.</span>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+
+    <p style="font-size:12px;color:#888;margin-top:14px;line-height:1.5;font-style:italic;">
+      Lectura: el 11,73% de la fuerza laboral española se concentra en 41 ocupaciones con vulnerabilidad ≥7,5.
+      La cifra equivale en orden de magnitud a la destrucción central estimada por <a href="/comparativa-funcas/" style="color:#5a7048;text-decoration:underline;">Funcas</a> (≈2M empleos en 10 años) sin asumir velocidad de adopción.
+      Datos brutos en <a href="/data/spain_v15_threshold_lookup.csv" style="color:#666;text-decoration:underline;">CSV</a>.
+    </p>
+  </div>
+</section>

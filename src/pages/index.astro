@@ -3,6 +3,7 @@ import Base from "../layouts/Base.astro";
 import DashboardIsland from "../components/react/DashboardIsland";
 import OccupationTable from "../components/astro/OccupationTable.astro";
 import SectorSummary from "../components/astro/SectorSummary.astro";
+import ThresholdCurve from "../components/astro/ThresholdCurve.astro";
 import { loadAllOccupations, getSectorStats, getAggregateStats, generateDatasetJsonLd, generateFaqJsonLd } from "../data/loadOccupations";
 
 const { es, en } = loadAllOccupations();
@@ -26,6 +27,9 @@ const description = `Análisis interactivo de exposición a la IA de las ${es.le
       <a href="/sector/" style="display:inline-flex;align-items:center;gap:5px;padding:6px 14px;font-size:11px;font-weight:600;background:#1a1a1a;color:#faf8f4;border-radius:5px;text-decoration:none;letter-spacing:0.3px;">
         📊 Ver los {sectors.length} sectores
       </a>
+      <a href="/comparativa-funcas/" style="display:inline-flex;align-items:center;gap:5px;padding:6px 14px;font-size:11px;font-weight:600;background:#5a7048;color:#faf8f4;border-radius:5px;text-decoration:none;letter-spacing:0.3px;">
+        📐 Comparativa Funcas · r=0,936
+      </a>
       <a href="#seo-occupation-table" style="display:inline-flex;align-items:center;gap:5px;padding:6px 14px;font-size:11px;font-weight:600;background:transparent;color:#666;border:1px solid #d8d4cc;border-radius:5px;text-decoration:none;letter-spacing:0.3px;">
         📋 Tabla de {es.length} ocupaciones
       </a>
@@ -36,6 +40,7 @@ const description = `Análisis interactivo de exposición a la IA de las ${es.le
   </nav>
 
   <!-- Static SEO content — zero JS, visible to all crawlers and LLMs -->
+  <ThresholdCurve />
   <SectorSummary sectors={sectors} />
   <OccupationTable occupations={es} enOccupations={en} />
 </Base>

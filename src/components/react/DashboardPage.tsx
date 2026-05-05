@@ -444,19 +444,17 @@ function Dashboard({ data }: { data: Occupation[] }) {
           </div>
           <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
             <a
-              href="/comparativa-funcas.html"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/comparativa-funcas/"
               style={{
                 display: "inline-flex", alignItems: "center", gap: 6,
                 padding: "8px 14px", fontSize: 11, fontWeight: 700,
-                background: "#1a1a1a", color: "#faf8f4",
+                background: "#5a7048", color: "#faf8f4",
                 borderRadius: 6, textDecoration: "none",
                 letterSpacing: "0.5px", textTransform: "uppercase",
                 fontFamily: F,
               }}
             >
-              📊 Comparativa FUNCAS
+              📐 Comparativa FUNCAS · r=0,936
             </a>
             <LanguageToggle />
           </div>
@@ -1047,7 +1045,7 @@ export default function Index() {
 
   useEffect(() => {
     setData(null);
-    const file = lang === "en" ? "/data/spain_502_v14_subcomp_complete_en.json" : "/data/spain_502_v14_subcomp_complete.json";
+    const file = lang === "en" ? "/data/spain_502_v15_subcomp_complete_en.json" : "/data/spain_502_v15_subcomp_complete.json";
     fetch(file)
       .then(r => { if (!r.ok) throw new Error("Failed to load data"); return r.json(); })
       .then((raw: RawOccupation[]) => setData(raw.map(parseOccupation)))

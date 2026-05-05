@@ -63,7 +63,7 @@ const jsonLdItems = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
     <meta name="twitter:image" content={image} />
 
     <!-- Alternate data formats -->
-    <link rel="alternate" type="application/json" href="/data/spain_502_v14_subcomp_complete.json" />
+    <link rel="alternate" type="application/json" href="/data/spain_502_v15_subcomp_complete.json" />
     <link rel="alternate" type="text/plain" href="/llms-full.txt" />
 
     <!-- Structured Data -->
@@ -76,6 +76,8 @@ const jsonLdItems = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <slot name="head" />
   </head>
   <body>
     <slot />

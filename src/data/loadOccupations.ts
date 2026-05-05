@@ -4,8 +4,8 @@
  */
 
 import type { RawOccupation } from "@/lib/occupationData";
-import esDataRaw from "../../public/data/spain_502_v14_subcomp_complete.json";
-import enDataRaw from "../../public/data/spain_502_v14_subcomp_complete_en.json";
+import esDataRaw from "../../public/data/spain_502_v15_subcomp_complete.json";
+import enDataRaw from "../../public/data/spain_502_v15_subcomp_complete_en.json";
 
 const esData = esDataRaw as RawOccupation[];
 const enData = enDataRaw as RawOccupation[];
@@ -113,9 +113,16 @@ export function generateDatasetJsonLd(data: RawOccupation[]) {
       "description": `${data.length} ocupaciones CNO-11, ${stats.totalEmployment.toLocaleString("es-ES")} trabajadores, EPA Q4 2025, Censo 2021`,
       "license": "https://creativecommons.org/licenses/by/4.0/",
       "temporalCoverage": "2025",
+      "identifier": [
+        "https://zenodo.org/records/19186444",
+        "https://zenodo.org/records/20031741",
+      ],
       "distribution": [
-        { "@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": `${BASE_URL}/data/spain_502_v14_subcomp_complete.json` },
-        { "@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": `${BASE_URL}/data/spain_502_v14_subcomp_complete_en.json` },
+        { "@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": `${BASE_URL}/data/spain_502_v15_subcomp_complete.json` },
+        { "@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": `${BASE_URL}/data/spain_502_v15_subcomp_complete_en.json` },
+        { "@type": "DataDownload", "encodingFormat": "text/csv", "contentUrl": `${BASE_URL}/data/spain_v15_threshold_lookup.csv` },
+        { "@type": "DataDownload", "encodingFormat": "text/csv", "contentUrl": `${BASE_URL}/data/funcas_validation_data.csv` },
+        { "@type": "DataDownload", "encodingFormat": "application/pdf", "contentUrl": `${BASE_URL}/data/funcas_validation_addendum.pdf` },
         { "@type": "DataDownload", "encodingFormat": "text/plain", "contentUrl": `${BASE_URL}/llms-full.txt` },
       ],
       "variableMeasured": [
@@ -177,6 +184,11 @@ export function generateFaqJsonLd(data: RawOccupation[]) {
         "@type": "Question",
         "name": "¿Qué empleos en España son más seguros frente a la inteligencia artificial?",
         "acceptedAnswer": { "@type": "Answer", "text": `Las 5 ocupaciones con menor vulnerabilidad a la IA son: ${bottom5Names}. Estas profesiones requieren habilidades físicas especializadas, empatía humana directa o marcos regulatorios estrictos que limitan la automatización.` },
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cómo se relaciona este dataset con el estudio Funcas sobre IA y empleo en España?",
+        "acceptedAnswer": { "@type": "Answer", "text": `El estudio Funcas (Rodríguez-Fernández, abril 2026) estima 1,7-2,3 millones de empleos destruidos por IA en España en diez años, agregados a los 9 grandes grupos CNO-11. Este dataset opera al cuarto dígito (502 ocupaciones) con una metodología independiente. Cuando se agregan los scores de v15 al primer dígito y se comparan con el AIOE-CNO de Funcas, la correlación de Pearson es r = 0,936 (Spearman ρ = 0,830). Dos metodologías independientes con inputs disjuntos convergen al nivel macro; v15 añade granularidad ocupacional al cuarto dígito. Detalle completo en /comparativa-funcas/.` },
       },
     ],
   };

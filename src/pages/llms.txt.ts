@@ -36,11 +36,14 @@ ${sectorList}
 ## Methodology
 
 - [Methodology PDF (v23)](${BASE_URL}/data/ia-empleo-espana-metodologia-v23.pdf): Full documentation of the 4-dimensional scoring formula, data sources, and validation process.
+- [Funcas cross-validation addendum (PDF)](${BASE_URL}/data/funcas_validation_addendum.pdf): Cross-validation against Funcas DT-2026/04 (Rodríguez-Fernández, abril 2026). Pearson r = 0.936 over 9 CNO-11 grand groups. Markdown source and CSV data also available.
 
 ## Data
 
-- [Full dataset (Spanish, JSON)](${BASE_URL}/data/spain_502_v14_subcomp_complete.json): All ${es.length} occupations with complete metadata in Spanish.
-- [Full dataset (English, JSON)](${BASE_URL}/data/spain_502_v14_subcomp_complete_en.json): All ${es.length} occupations with complete metadata in English.
+- [Full dataset v15 (Spanish, JSON)](${BASE_URL}/data/spain_502_v15_subcomp_complete.json): All ${es.length} occupations with complete metadata in Spanish (v15 schema with cumulative workforce thresholds).
+- [Full dataset (English, JSON)](${BASE_URL}/data/spain_502_v15_subcomp_complete_en.json): All ${es.length} occupations with complete metadata in English.
+- [Threshold lookup CSV](${BASE_URL}/data/spain_v15_threshold_lookup.csv): Number of occupations and workers at or above each vulnerability score threshold.
+- [Funcas validation data CSV](${BASE_URL}/data/funcas_validation_data.csv): Group-by-group comparison of Funcas AIOE-CNO and v15 weighted vulnerability for the 9 CNO-11 grand groups.
 - [Complete context for LLMs](${BASE_URL}/llms-full.txt): Full inline dataset optimized for LLM consumption.
 
 ## Individual Occupation Pages
@@ -50,7 +53,9 @@ ${sectorList}
 ## Optional
 
 - [Interactive visualization](${BASE_URL}): Treemap, scatter plot, and list views of the ${es.length} occupations.
-- [Zenodo archive](https://doi.org/10.5281/zenodo.19186444): Permanent academic record of the dataset.
+- [Funcas cross-validation page](${BASE_URL}/comparativa-funcas/): Side-by-side comparison with the Funcas DT-2026/04 study, including the r=0.936 convergence finding, scatter plot of the 9 CNO grand groups, and 4-digit decomposition of the most-flagged groups.
+- [Zenodo · methodology v30](https://zenodo.org/records/19186444): Permanent academic record of the methodology.
+- [Zenodo · cross-validation addendum](https://zenodo.org/records/20031741): Permanent academic record of the validation against Funcas.
 
 ## Source & License
 

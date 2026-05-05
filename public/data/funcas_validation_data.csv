@@ -1,0 +1,11 @@
+cno_1d,grupo_nombre,funcas_ocupados,v15_empleo,funcas_aioe,v15_vulnerabilidad_ponderada,funcas_destruccion_central,funcas_canal,v15_ocupaciones,v15_workers_ge7,v15_workers_ge75,v15_pct_ge7
+0,Fuerzas Armadas,70000,99400,0.1,2.0000,0,Sin efecto,3,0,0,0.00
+1,Directores y gerentes,870000,939800,0.52,4.8244,150000,Sustitución (parcial),33,0,0,0.00
+2,Técnicos y profesionales científicos,4350000,4618700,0.63,4.6981,906000,Sustitución alta,120,542223,539296,11.74
+3,Técnicos y profesionales de apoyo,2900000,2685200,0.55,5.5710,527000,Sustitución (parcial),98,1165519,1098600,43.41
+4,Empleados contables y administrativos,2100000,2132500,0.6,6.5998,417000,Sustitución alta,26,1039883,1023128,48.76
+5,Trabajadores de servicios y comercio,4050000,4982523,0.2,2.6661,0,Complementariedad,52,5336,5336,0.11
+6,Trab. cualificados agrícolas y pesqueros,540000,437200,0.1,2.5000,0,Sin efecto,14,0,0,0.00
+7,Artesanos e industria manufacturera,2150000,2386200,0.15,1.9972,0,Complementariedad (baja),80,0,0,0.00
+8,Operadores de instalaciones,1650000,1684600,0.13,2.9066,0,Sin efecto,44,0,0,0.00
+9,Ocupaciones elementales,3780000,2766100,0.08,1.3221,0,Sin efecto,32,0,0,0.00
