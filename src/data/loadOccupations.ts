@@ -56,7 +56,7 @@ export function getSectorStats(data: RawOccupation[]): SectorStat[] {
     const emp = occs.reduce((s, d) => s + d.empleo, 0);
     const avgScore = +(occs.reduce((s, d) => s + d.vulnerabilidad_ia_score, 0) / occs.length).toFixed(2);
     const avgSalary = Math.round(occs.reduce((s, d) => s + d.salario_medio_eur, 0) / occs.length);
-    const highRiskCount = occs.filter((d) => d.vulnerabilidad_ia_score > 7).length;
+    const highRiskCount = occs.filter((d) => d.vulnerabilidad_ia_score >= 7).length;
     return { sector, slug: sectorSlug(sector), count: occs.length, employment: emp, avgScore, avgSalary, highRiskCount, occupations: occs };
   });
 }
@@ -65,8 +65,12 @@ export function getSectorStats(data: RawOccupation[]): SectorStat[] {
 
 export function getAggregateStats(data: RawOccupation[]) {
   const totalEmployment = data.reduce((s, d) => s + d.empleo, 0);
+  // Unweighted: simple mean across the 502 occupations.
   const avgScore = +(data.reduce((s, d) => s + d.vulnerabilidad_ia_score, 0) / data.length).toFixed(2);
-  const highRiskOccs = data.filter((d) => d.vulnerabilidad_ia_score > 7);
+  // Weighted by employment (canonical headline figure per Zenodo).
+  const avgScoreWeighted = +(data.reduce((s, d) => s + d.vulnerabilidad_ia_score * d.empleo, 0) / totalEmployment).toFixed(2);
+  // High vulnerability = score ≥ 7 (canonical threshold matching the dashboard KPI and Zenodo).
+  const highRiskOccs = data.filter((d) => d.vulnerabilidad_ia_score >= 7);
   const highRiskCount = highRiskOccs.length;
   const highRiskEmployment = highRiskOccs.reduce((s, d) => s + d.empleo, 0);
   const highRiskPct = +((highRiskEmployment / totalEmployment) * 100).toFixed(1);
@@ -83,7 +87,7 @@ export function getAggregateStats(data: RawOccupation[]) {
   const euMinimal = data.filter((d) => d.eu_ai_act.toLowerCase().includes("mínimo") || d.eu_ai_act.toLowerCase().includes("minimal"));
 
   return {
-    totalEmployment, avgScore, highRiskCount, highRiskEmployment, highRiskPct,
+    totalEmployment, avgScore, avgScoreWeighted, highRiskCount, highRiskEmployment, highRiskPct,
     lowRiskAvgSalary, highRiskAvgSalary, top5, bottom5,
     euHighRisk, euLimited, euMinimal,
   };
@@ -99,7 +103,7 @@ export function generateDatasetJsonLd(data: RawOccupation[]) {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Vulnerabilidad de Empleos a la IA en España",
-    "description": `Análisis interactivo de exposición a la IA de las ${data.length} ocupaciones del mercado laboral español`,
+    "description": `Análisis interactivo de vulnerabilidad a la IA de las ${data.length} ocupaciones del mercado laboral español. Dataset v15, metodología v30.`,
     "url": BASE_URL,
     "applicationCategory": "DataVisualization",
     "operatingSystem": "Web",
@@ -157,7 +161,7 @@ export function generateFaqJsonLd(data: RawOccupation[]) {
       {
         "@type": "Question",
         "name": "¿Cuántos trabajadores están en riesgo por la inteligencia artificial en España?",
-        "acceptedAnswer": { "@type": "Answer", "text": `De los ${stats.totalEmployment.toLocaleString("es-ES")} trabajadores analizados (EPA Q4 2025), ${stats.highRiskEmployment.toLocaleString("es-ES")} trabajan en ocupaciones con una puntuación de vulnerabilidad superior a 7/10, lo que representa el ${stats.highRiskPct}% del empleo total. Esto abarca ${stats.highRiskCount} de las ${data.length} ocupaciones CNO-11.` },
+        "acceptedAnswer": { "@type": "Answer", "text": `De los ${stats.totalEmployment.toLocaleString("es-ES")} trabajadores analizados (EPA Q4 2025), ${stats.highRiskEmployment.toLocaleString("es-ES")} trabajan en ocupaciones con una puntuación de vulnerabilidad ≥7/10, lo que representa el ${stats.highRiskPct}% del empleo total. Esto abarca ${stats.highRiskCount} de las ${data.length} ocupaciones CNO-11.` },
       },
       {
         "@type": "Question",
@@ -177,7 +181,7 @@ export function generateFaqJsonLd(data: RawOccupation[]) {
       {
         "@type": "Question",
         "name": "¿Cuál es el salario medio de los empleos más y menos vulnerables a la IA?",
-        "acceptedAnswer": { "@type": "Answer", "text": `Las ocupaciones con alta vulnerabilidad (score >7) tienen un salario medio de ${stats.highRiskAvgSalary.toLocaleString("es-ES")} €/año, mientras que las más resistentes (score <3) promedian ${stats.lowRiskAvgSalary.toLocaleString("es-ES")} €/año. El score medio de vulnerabilidad del mercado laboral español es ${stats.avgScore}/10.` },
+        "acceptedAnswer": { "@type": "Answer", "text": `Las ocupaciones con alta vulnerabilidad (score ≥7) tienen un salario medio de ${stats.highRiskAvgSalary.toLocaleString("es-ES")} €/año, mientras que las más resistentes (score <3) promedian ${stats.lowRiskAvgSalary.toLocaleString("es-ES")} €/año. El score medio ponderado por empleo del mercado laboral español es ${stats.avgScoreWeighted}/10 (${stats.avgScore}/10 sin ponderar).` },
       },
       {
         "@type": "Question",

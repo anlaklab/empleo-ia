@@ -13,7 +13,7 @@ const datasetJsonLd = generateDatasetJsonLd(es);
 const faqJsonLd = generateFaqJsonLd(es);
 
 const title = "Vulnerabilidad de Empleos a la IA en España";
-const description = `Análisis interactivo de exposición a la IA de las ${es.length} ocupaciones del mercado laboral español · ${stats.totalEmployment.toLocaleString("es-ES")} trabajadores · EPA Q4 2025 · Metodología v30`;
+const description = `Análisis interactivo de vulnerabilidad a la IA de las ${es.length} ocupaciones del mercado laboral español · ${stats.totalEmployment.toLocaleString("es-ES")} trabajadores · EPA Q4 2025 · Metodología v30 · Dataset v15`;
 ---
 
 <Base title={title} description={description} jsonLd={[datasetJsonLd, faqJsonLd]}>

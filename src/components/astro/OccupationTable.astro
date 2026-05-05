@@ -10,7 +10,8 @@ interface Props {
 const { occupations, enOccupations } = Astro.props;
 const enByCno = enOccupations ? new Map(enOccupations.map((d) => [d.cno, d])) : new Map();
 const totalEmployment = occupations.reduce((s, d) => s + d.empleo, 0);
-const avgScore = +(occupations.reduce((s, d) => s + d.vulnerabilidad_ia_score, 0) / occupations.length).toFixed(2);
+const avgScoreUnweighted = +(occupations.reduce((s, d) => s + d.vulnerabilidad_ia_score, 0) / occupations.length).toFixed(2);
+const avgScoreWeighted = +(occupations.reduce((s, d) => s + d.vulnerabilidad_ia_score * d.empleo, 0) / totalEmployment).toFixed(2);
 
 const F = "'DM Sans', sans-serif";
 const S = "'Cormorant Garamond', serif";
@@ -20,13 +21,16 @@ const S = "'Cormorant Garamond', serif";
   <h2 style={`font-size:clamp(18px,2vw,24px);font-family:${S};font-weight:600;margin-bottom:4px;color:#1a1a1a;`}>
     {occupations.length} ocupaciones del mercado laboral español: vulnerabilidad a la IA
   </h2>
+  <p style="margin-bottom:4px;font-size:14px;color:#1a1a1a;font-weight:600;">
+    Score medio ponderado por empleo: <span style="color:#c8633a;">{avgScoreWeighted.toString().replace(".", ",")}/10</span>
+  </p>
   <p style="margin-bottom:12px;font-size:12px;color:#888;">
-    Datos: EPA Q4 2025, INE Census 2021, SEPE 2024 · Metodología v30 · {totalEmployment.toLocaleString("es-ES")} trabajadores · Score medio: {avgScore}/10
+    Datos: EPA Q4 2025, INE Census 2021, SEPE 2024 · Metodología v30 · Dataset v15 · {totalEmployment.toLocaleString("es-ES")} trabajadores · Score medio (no ponderado): {avgScoreUnweighted.toString().replace(".", ",")}/10
   </p>
   <div style="overflow-x:auto;">
     <table style="width:100%;border-collapse:collapse;font-size:11px;line-height:1.4;">
       <caption style="text-align:left;padding:0.5rem 0;font-size:11px;color:#999;">
-        Análisis de vulnerabilidad a la inteligencia artificial de las {occupations.length} ocupaciones CNO-11 del mercado laboral espa��ol. Puntuación 0 (mínima exposición) a 10 (máxima exposición).
+        Análisis de vulnerabilidad a la inteligencia artificial de las {occupations.length} ocupaciones CNO-11 del mercado laboral español. Puntuación 0 (mínima vulnerabilidad) a 10 (máxima vulnerabilidad).
       </caption>
       <thead>
         <tr style="border-bottom:2px solid #e0dcd4;text-align:left;">

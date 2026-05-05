@@ -24,8 +24,9 @@ This dataset classifies all ${es.length} CNO-11 occupations in Spain by their vu
 
 - ${es.length} occupations analyzed (CNO-11 classification)
 - ${stats.totalEmployment.toLocaleString("es-ES")} workers covered
-- Average AI vulnerability score: ${stats.avgScore}/10
-- ${stats.highRiskCount} occupations with score > 7/10 (${stats.highRiskEmployment.toLocaleString("es-ES")} workers, ${stats.highRiskPct}% of total employment)
+- Average AI vulnerability score (employment-weighted, canonical): ${stats.avgScoreWeighted}/10
+- Average AI vulnerability score (unweighted): ${stats.avgScore}/10
+- ${stats.highRiskCount} occupations with score ≥ 7/10 (${stats.highRiskEmployment.toLocaleString("es-ES")} workers, ${stats.highRiskPct}% of total employment)
 - ${sectors.length} economic sectors
 - EU AI Act: ${stats.euHighRisk.length} high risk, ${stats.euLimited.length} limited, ${stats.euMinimal.length} minimal
 
