@@ -35,8 +35,8 @@ ${sectorList}
 
 ## Methodology
 
-- [Methodology PDF (v23)](${BASE_URL}/data/ia-empleo-espana-metodologia-v23.pdf): Full documentation of the 4-dimensional scoring formula, data sources, and validation process.
-- [Funcas cross-validation addendum (PDF)](${BASE_URL}/data/funcas_validation_addendum.pdf): Cross-validation against Funcas DT-2026/04 (Rodríguez-Fernández, abril 2026). Pearson r = 0.936 over 9 CNO-11 grand groups. Markdown source and CSV data also available.
+- [Full methodology v30 on Zenodo](https://doi.org/10.5281/zenodo.19076797): Complete documentation of the 4-dimensional scoring formula, data sources, validation process, and the cross-validation addendum against Funcas DT-2026/04 (Pearson r = 0.936 over 9 CNO-11 grand groups). Concept DOI redirects to the latest version.
+- [Funcas cross-validation addendum (local PDF)](${BASE_URL}/data/funcas_validation_addendum.pdf): Direct download of the addendum. Markdown source and CSV data also available.
 
 ## Data
 

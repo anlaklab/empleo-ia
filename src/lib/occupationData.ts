@@ -19,7 +19,7 @@ export interface RawOccupation {
   rescore_F?: number;
   rescore_R?: number;
   rescore_formula?: string;
-  // v14 fields
+  // v15 employment + history fields
   empleo_v10?: number;
   empleo_delta_v11?: number;
   employment_confidence?: string;
@@ -71,7 +71,7 @@ export interface Occupation {
   rescoreRange?: string;
   rescoreNModels?: number;
   rescoreRawAvg?: number;
-  // v14 employment fields
+  // v15 employment fields
   employmentConfidence?: string;
   flagDivergencia?: boolean;
   // treemap layout

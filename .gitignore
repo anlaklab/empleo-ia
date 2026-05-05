@@ -37,3 +37,14 @@ dist-ssr
 
 # Astro cache
 .astro/
+
+# Old dataset / methodology versions — current canonical sources are
+# spain_502_v15_subcomp_complete{,_en}.json + Zenodo concept DOI 19076797.
+# Kept on disk locally for historical reference; not tracked or deployed.
+public/data/spain_502_FINAL_v7.json
+public/data/spain_502_FINAL_v7_en.json
+public/data/spain_502_v10_final.json
+public/data/spain_502_v10_final_en.json
+public/data/ocupaciones_vulnerabilidad_ia_espana_100.json
+public/data/ia-empleo-espana-metodologia-v20.pdf
+public/data/ia-empleo-espana-metodologia-v23.pdf
