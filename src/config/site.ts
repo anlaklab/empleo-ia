@@ -10,7 +10,7 @@ export const SITE = {
 
   // Search engine ownership verification (paste only the `content` value).
   // Get from: Search Console → property → HTML tag verification.
-  googleSiteVerification: "",
+  googleSiteVerification: "y1Big3z8JiQc5rclYtbH-eoUijXAJg6yFTebaxsv39A",
   // Get from: Bing Webmaster Tools → site → Meta tag authentication.
   bingSiteVerification: "",
 
