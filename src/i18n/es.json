@@ -49,7 +49,9 @@
     "avgSalary": "Salario Medio",
     "iaExposure": "Vulnerabilidad IA",
     "trend": "Tendencia general",
-    "bubbleNote": "El tamaño de la burbuja representa el volumen de empleo de la ocupación respecto al total."
+    "bubbleNote_empleo": "El tamaño de la burbuja representa el volumen de empleo de la ocupación respecto al total.",
+    "bubbleNote_salario": "El tamaño de la burbuja representa el salario medio anual de la ocupación.",
+    "bubbleNote_score": "El tamaño de la burbuja representa el nivel de exposición a la IA de la ocupación."
   },
   "list": {
     "exposure": "Vulnerabilidad",
