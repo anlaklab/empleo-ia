@@ -879,7 +879,7 @@ function Dashboard({ data }: { data: Occupation[] }) {
               {hovered && <OccupationTooltip item={hovered} mousePos={mousePos} />}
             </div>
             <div style={{ display: "flex", justifyContent: "center", marginTop: 12 }}>
-              <span style={{ fontSize: 10, color: "#888" }}>{t("scatter.bubbleNote")}</span>
+              <span style={{ fontSize: 10, color: "#888" }}>{t(`scatter.bubbleNote_${sortBy}`)}</span>
             </div>
           </div>
         );
