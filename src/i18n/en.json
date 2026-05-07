@@ -49,7 +49,9 @@
     "avgSalary": "Average Salary",
     "iaExposure": "AI Vulnerability",
     "trend": "General trend",
-    "bubbleNote": "Bubble size represents the occupation's share of total employment."
+    "bubbleNote_empleo": "Bubble size represents the occupation's share of total employment.",
+    "bubbleNote_salario": "Bubble size represents the occupation's average annual salary.",
+    "bubbleNote_score": "Bubble size represents the occupation's AI exposure level."
   },
   "list": {
     "exposure": "Vulnerability",
